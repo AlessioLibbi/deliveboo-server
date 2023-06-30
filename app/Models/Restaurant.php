@@ -9,6 +9,10 @@ class Restaurant extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'adress', 'email', 'number', 'PIVA', 'slug'];
+    public function cookings()
+    {
+        return $this->belongsToMany(Cooking::class);
+    }
     public function product()
     {
         return $this->hasMany(Product::class);
