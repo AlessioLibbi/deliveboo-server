@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('status_id')->nullable();
-
-            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('set null');
+        Schema::create('cookings', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 20);
+            $table->timestamps();
         });
     }
 
@@ -27,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropForeign('orders_status_id_foreign');
-            $table->dropColumn('status_id');
-        });
+        Schema::dropIfExists('cookings');
     }
 };
