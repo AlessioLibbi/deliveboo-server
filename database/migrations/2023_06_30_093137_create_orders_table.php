@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('email', 50)->nullable(false);
             $table->string('phone', 13)->nullable(false);
             $table->timestamps();
-            // $table->Big('status', 20)->nullable(false);
         });
     }
 
