@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('restaurant_id')->nullable(false);
+            $table->unsignedBigInteger('restaurant_id')->default('1');
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
         });
     }
