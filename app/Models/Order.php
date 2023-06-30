@@ -12,4 +12,9 @@ class Order extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
