@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">nome ristorante</label>
+                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">Partita IVA</label>
 
                             <div class="col-md-6">
                                 <input id="PIVA" type="text" class="form-control" name="PIVA">
