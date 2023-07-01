@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+
 
 class RegisteredUserController extends Controller
 {
@@ -41,6 +44,17 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        // var_dump($request);
+        $restaurant = Restaurant::create([
+            'name' => $request-> restaurant_name,
+            'address' => $request-> address,
+            'email'=> $request-> email,
+            'number'=> $request-> number,
+            'PIVA'=> $request-> PIVA,
+            'slug' => Str::slug($request->restaurant_name, '-'),
+            'user_id' => $user->id
+        ]);
+        var_dump($restaurant);
 
         event(new Registered($user));
 

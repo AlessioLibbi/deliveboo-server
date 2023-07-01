@@ -26,10 +26,9 @@
 
 <body>
     <div id="app">
-
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Deliveboo</a>
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +37,7 @@
             </div>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap ms-2">
-                    <p id="capo" class="d-inline-block mx-4"> {{ Auth::user()->name }}</p>
+                    <p id="capo" class="d-inline-block mx-4 text-white"> {{ Auth::user()->name }}</p>
                     <a class="nav-link d-inline-block" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -59,12 +58,13 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
+                            - Dashboard
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
+                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw mx-2 "
                                         style="color: rgb(45, 243, 0);"></i> Dashboard
-                                </a>
+                                </a> --}}
                             </li>
 
                             <li class="nav-item text-white">
@@ -97,5 +97,16 @@
                             </li>
 
                             <li class="nav-item text-white">
-                                <a href=""> CREA NUOVO RISTORANTE </a>
-                                ... (22 righe a disposizione)
+                                <a href="{{route('adminrestaurants.create')}}"> CREA NUOVO RISTORANTE </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-primary">
+        @yield('content')
+    </main>
+</body>
+            

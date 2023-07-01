@@ -61,6 +61,41 @@
                             </div>
                         </div>
 
+
+{{-- ------------------------------------- NUOVO FORM --}}
+
+                        <div class="mb-4 row">
+                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">nome ristorante</label>
+
+                            <div class="col-md-6">
+                                <input id="restaurant_name" type="text" class="form-control" name="restaurant_name">
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address">
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="number" class="col-md-4 col-form-label text-md-right">numero</label>
+
+                            <div class="col-md-6">
+                                <input id="number" type="text" class="form-control" name="number">
+                            </div>
+                        </div>
+
+                        <div class="mb-4 row">
+                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">Partita IVA</label>
+
+                            <div class="col-md-6">
+                                <input id="PIVA" type="text" class="form-control" name="PIVA">
+                            </div>
+                        </div>
+                        {{-- -----------FINE NUOVO FORM --}}
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -69,6 +104,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
