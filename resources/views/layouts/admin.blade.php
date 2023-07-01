@@ -97,7 +97,7 @@
                             </li>
 
                             <li class="nav-item text-white">
-                                <a href=""> CREA NUOVO RISTORANTE </a>
+                                <a href="{{route('adminrestaurants.create')}}"> CREA NUOVO RISTORANTE </a>
                             </li>
                         </ul>
                     </div>
