@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        // var_dump($request);
+
         $restaurant = Restaurant::create([
             'name' => $request-> restaurant_name,
             'address' => $request-> address,
@@ -54,7 +54,6 @@ class RegisteredUserController extends Controller
             'slug' => Str::slug($request->restaurant_name, '-'),
             'user_id' => $user->id
         ]);
-        var_dump($restaurant);
 
         event(new Registered($user));
 
