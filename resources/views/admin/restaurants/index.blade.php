@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<p>Qui creo ristorante</p>
+<p>Visualizzo Ristorante</p>
 
 @endsection
