@@ -18,7 +18,7 @@ class RestaurantsTableSeeder extends Seeder
     {
         $restaurant = new Restaurant();
         $restaurant->name = 'Alessio & Co';
-        $restaurant->adress = 'Via MonteNero 11';
+        $restaurant->address = 'Via MonteNero 11';
         $restaurant->email = 'alex.libbi@gmail.com';
         $restaurant->number = '380-349-9641';
         $restaurant->PIVA = '39761040565';
