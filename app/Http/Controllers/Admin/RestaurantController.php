@@ -16,11 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::where('user_id', Auth::id())->get();
-        return view('admin.restaurants.index', compact('restaurants'));
-
+        
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +27,7 @@ class RestaurantController extends Controller
     public function create()
     {
         //
+        return view('admin.restaurants.create');
     }
 
     /**

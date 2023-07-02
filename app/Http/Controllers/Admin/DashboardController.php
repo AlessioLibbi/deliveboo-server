@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $id = Auth::id();
         $data = Restaurant::findOrFail($id);
         $products = Product::where('restaurant_id', $data->id)->get();
-        var_dump($products);
+        session()->flash('message');
         return view('admin.dashboard', compact('data', 'products'));
     }
 }
