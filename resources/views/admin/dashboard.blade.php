@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container ">
+    <div class="container">
         <div class="row justify-content-center my-4">
             <div class="col">
                 @if (session()->has('message'))
@@ -21,38 +21,71 @@
                     </div>
                 @endif
             </div>
-            <div class="list position-relative overflow-auto" style="height: calc(100vh - 80px)">
-
-                <h2 class="fs-4 text-secondary my-4">
-                    Ristorante {{ $data->name }}
-                </h2>
-                <div class="position d-flex justify-content-end mb-5">
-                    <a href="{{ route('products.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
-                        Products</a>
-                </div>
-                @foreach ($products as $product)
-                    <div class="product d-flex justify-content-between align-items-center border border-2 rounded p-0">
-                        <div class="img">
-                            <img src="{{ asset('img/vinicius-benedit--1GEAA8q3wk-unsplash.jpg') }}" alt=""
-                                class="img-fluid rounded" style="max-width: 200px;">
-                        </div>
-                        <div class="content">
-                            <h4 class="mb-1">title</h4>
-                            <p class="text-muted">prezzo</p>
-                        </div>
-                        <div class="actions pe-2">
-                            <a href="{{ route('products.show', $product) }}" class="btn btn-primary">Show</a>
-                            <a href="#" class="btn btn-secondary">edit</a>
-                            <form action="{{ route('products.destroy', $product) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </div>
+            <div class="list position-relative">
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h2>{{ $data->name }}</h2>
                     </div>
-                @endforeach
+                    <table class="table table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <th class="table-dark">Address</th>
+                                <td>{{ $data->address }}</td>
+                            </tr>
+                            <tr>
+                                <th class="table-dark">Number</th>
+                                <td>{{ $data->number }}</td>
+                            </tr>
+                            <tr>
+                                <th class="table-dark">Partita IVA</th>
+                                <td>{{ $data->PIVA }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end card-body">
+                        <a href="#" class="btn btn-secondary">edit</a>
+                    </div>
+                </div>
+
+                <table class="table table-hover table-bordered text-center">
+                    <caption>List of product</caption>
+                    <thead>
+                        <tr class="table-dark">
+                            <th>Product</th>
+                            <th class="d-none d-xl-table-cell">Name</th>
+                            <th>Available</th>
+                            <th class="d-none d-md-table-cell">Price</th>
+                            <th class="d-none d-lg-table-cell">Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                            <tr>
+                                <td class="d-none d-xl-table-cell">
+                                    <img src="{{ asset('img/vinicius-benedit--1GEAA8q3wk-unsplash.jpg') }}" alt=""
+                                        class="img-fluid rounded" style="max-width: 200px;">
+                                </td>
+                                <td>{{ $product->name }}</td>
+                                <td>
+                                    @if ($product->visibility === 1)
+                                        true
+                                    @else
+                                        false
+                                    @endif
+                                </td>
+                                <td class="d-none d-md-table-cell">{{ $product->price }}&euro;</td>
+                                <td class="d-none d-lg-table-cell">{{ $product->description }}</td>
+                                <td>
+                                    <a href="#" class="btn my-1 btn-primary">show</a>
+                                    <a href="#" class="btn my-1 btn-secondary">edit</a>
+                                    <a href="#" class="btn my-1 btn-danger">delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-        </div>
         @yield('content')
     </div>
 
