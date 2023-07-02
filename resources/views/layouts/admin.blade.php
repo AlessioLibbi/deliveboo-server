@@ -35,14 +35,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap ms-2">
-                    <p id="capo" class="d-inline-block mx-4 text-white"> {{ Auth::user()->name }}</p>
-                    <a class="nav-link d-inline-block" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
+            <div class="nav-item dropdown text-white">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                    <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -50,63 +55,32 @@
             </div>
         </header>
 
-        <div class="container-fluid vh-100">
+        <div class="container-fluid " style="height: calc(100vh - 56px)">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
-                            - Dashboard
                             <li class="nav-item">
-                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw mx-2 "
-                                        style="color: rgb(45, 243, 0);"></i> Dashboard
-                                </a> --}}
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('dashboard') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                                </a>
                             </li>
-
-                            <li class="nav-item text-white">
-                                - Panoramica ristorante
-                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-regular fa-folder-open mx-2"  style="color: rgb(151, 71, 255);"></i> Projects
-                                </a> --}}
-                            </li>
-                            <li class="nav-item text-white">
-                                - Controlla il tuo menu
-                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.projects.create') }}">
-                                    <i class="fa-solid fa-circle-plus mx-2"  style="color: rgb(5, 225, 240);"></i> Crea uno nuovo Progetto
-                                </a> --}}
-                            </li>
-                            <li class="nav-item text-white">
-                                - controlla o modifica tipologia di cucina del tuo ristorante
-                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.create' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.types.create') }}">
-                                    <i class="fa-solid fa-circle-plus mx-2"  style="color: rgb(5, 225, 240);"></i> Inserisci nuovo TIPO
-                                </a> --}}
-                            </li>
-                            <li class="nav-item text-white">
-                                - Controlla gli ordini dei clienti
-                                {{-- <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.types.index') }}">
-                                    <i class="fa-regular fa-folder-open mx-2"  style="color:  rgb(151, 71, 255);"></i> Lista dei TIPI
-                                </a> --}}
-                            </li>
-
-                            <li class="nav-item text-white">
-                                <a href="{{route('restaurants.create')}}"> CREA NUOVO RISTORANTE </a>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('restaurants.index')}}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Il mio ristorante
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </nav>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    @yield('content')
+                </main>
             </div>
         </div>
     </div>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-primary">
-        @yield('content')
-    </main>
+    
 </body>
             
