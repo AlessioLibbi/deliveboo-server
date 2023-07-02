@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="mb-4">Add Product</h1>
-        <form action="{{ route('restaurants.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
@@ -12,7 +12,7 @@
 
             <div class="mb-3">
                 <label for="img_path" class="form-label">Image Path:</label>
-                <input type="file" class="form-control" id="img_path" name="image_path" required accept="image/*">
+                <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
             </div>
 
             <div class="form-check mb-3">
@@ -32,6 +32,7 @@
                 <label for="description" class="form-label">Description:</label>
                 <textarea class="form-control" id="description" name="description" required></textarea>
             </div>
+
 
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>

@@ -21,13 +21,13 @@
                     </div>
                 @endif
             </div>
-            <div class="list position-relative">
+            <div class="list position-relative overflow-auto" style="height: calc(100vh - 80px)">
 
                 <h2 class="fs-4 text-secondary my-4">
                     Ristorante {{ $data->name }}
                 </h2>
                 <div class="position d-flex justify-content-end mb-5">
-                    <a href="{{ route('restaurants.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
+                    <a href="{{ route('products.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
                         Products</a>
                 </div>
                 @foreach ($products as $product)
@@ -43,7 +43,11 @@
                         <div class="actions pe-2">
                             <a href="#" class="btn btn-primary">show</a>
                             <a href="#" class="btn btn-secondary">edit</a>
-                            <a href="#" class="btn btn-danger">delete</a>
+                            <form action="{{ route('products.destroy', $product) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

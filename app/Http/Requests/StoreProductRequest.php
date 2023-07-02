@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Restaurant;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreProductRequest extends FormRequest
 {
@@ -22,14 +24,23 @@ class StoreProductRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+    public function prepareForValidation()
+    {   
+        $restaurant = Restaurant::findOrFail(Auth::id());
+        $this->merge([
+            'restaurant_id' => $restaurant->id
+        ]);
+    }
+    
     public function rules()
     {
         return [
-            'name' => ['required','min:3','max:150', Rule::unique('projects')->ignore($this->project)], 
-            'price' => 'number',
-            'description'=> ['required','min:3','max:150'],
-            'technologies'=> ['nullable', 'exists:technologies,id'],
-            'image_path' => 'nullable'
+            'name' => ['required', 'min:3', 'max:150'],
+            'price' => 'required',
+            'visibility' => 'required',
+            'description' => ['required', 'min:3', 'max:150'],
+            'image_path' => 'required',
+            'restaurant_id' => 'required'
         ];
     }
 }

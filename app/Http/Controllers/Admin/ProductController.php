@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\File;
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -24,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.restaurants.create');
     }
 
     /**
@@ -33,18 +36,29 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        if ($request->hasFile('image_path')) {
+            $restaurantId = $validatedData['restaurant_id'];
+            $productName = Str::slug($validatedData['name']);
+            $directory =   $restaurantId . '/' . $productName;
+            foreach ($request->file('image_path') as $image) {
+                $path = $image->store($directory, 'public');
+            }
+            $validatedData['image_path'] = 'storage' . '/' .$directory;
+        }
+        $project = Product::create($validatedData);
+        return redirect()->route('dashboard');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
         //
     }
@@ -52,10 +66,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +78,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +89,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
     {
-        //
+        File::deleteDirectory($product->image_path);
+        $product->delete(); 
+        return redirect()->route('dashboard');
     }
 }

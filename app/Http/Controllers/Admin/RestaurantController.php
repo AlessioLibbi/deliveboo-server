@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+
+
 
 class RestaurantController extends Controller
 {
@@ -19,9 +17,21 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        
+        // ci servira per dopo non cancelarre
+        // $archivos = scandir($directory); 
+
+        //     $imagenes = array();
+
+        //     foreach ($archivos as $archivo) {
+        //         $extension = pathinfo($archivo, PATHINFO_EXTENSION);
+        //         if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+        //             $imagenes[] = $archivo;
+        //         }
+        //     }
+
+        //     dd($imagenes);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +40,7 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        return view('admin.restaurants.create');
+        
     }
 
     /**
@@ -41,15 +51,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        $new = $request->validate();
-        if ($request->hasFile('image_path')) {
-            $path = Storage::disk('public')->put('project_images', $request->image_path);
-            $new['image_path'] = $path;
-        }
-        dd($new);
-        $project = Product::create($new);
         
-       
     }
 
     /**
