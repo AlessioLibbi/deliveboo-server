@@ -39,6 +39,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required',
             'visibility' => 'required',
             'description' => ['required', 'min:3', 'max:150'],
+            'slug'=> 'nullable',
             'image_path' => 'required',
             'restaurant_id' => 'required'
         ];
