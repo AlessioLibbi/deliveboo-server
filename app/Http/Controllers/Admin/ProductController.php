@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -37,15 +37,19 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductRequest $request)
-    {
+    {   
+
         $validatedData = $request->validated();
         if ($request->hasFile('image_path')) {
+            // se definiscono le variabile per dopo fare il path per le immagine
             $restaurantId = $validatedData['restaurant_id'];
             $productName = Str::slug($validatedData['name']);
             $directory =   $restaurantId . '/' . $productName;
+            // come si pasa un array se fa un forech per salvare ogni imagine sul codice
             foreach ($request->file('image_path') as $image) {
                 $path = $image->store($directory, 'public');
             }
+            // si salva nel database il path dove si trovano le immagine
             $validatedData['image_path'] = 'storage' . '/' .$directory;
         }
         $project = Product::create($validatedData);
@@ -58,9 +62,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        // questa variabile prende come valore un array con tutti le imagine dil prodotto 
+        $archivos = scandir($product->image_path); 
+
+            $images = array();
+        // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+            foreach ($archivos as $archivo) {
+                $extension = pathinfo($archivo, PATHINFO_EXTENSION);
+                if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                    $images[] = $product->image_path.'/'.$archivo;
+                }
+            }
+        return view('admin.products.show', compact('product', 'images'));
     }
 
     /**
@@ -93,7 +108,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
-    {
+    {   
+        // file sirve per eliminare le immagine che hanno relazione con il prodotto eliminato
         File::deleteDirectory($product->image_path);
         $product->delete(); 
         return redirect()->route('dashboard');

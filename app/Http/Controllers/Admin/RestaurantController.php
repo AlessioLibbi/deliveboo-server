@@ -17,19 +17,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        // ci servira per dopo non cancelarre
-        // $archivos = scandir($directory); 
-
-        //     $imagenes = array();
-
-        //     foreach ($archivos as $archivo) {
-        //         $extension = pathinfo($archivo, PATHINFO_EXTENSION);
-        //         if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-        //             $imagenes[] = $archivo;
-        //         }
-        //     }
-
-        //     dd($imagenes);
+        
     }
 
     /**

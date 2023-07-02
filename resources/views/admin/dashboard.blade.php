@@ -41,12 +41,12 @@
                             <p class="text-muted">prezzo</p>
                         </div>
                         <div class="actions pe-2">
-                            <a href="#" class="btn btn-primary">show</a>
+                            <a href="{{ route('products.show', $product) }}" class="btn btn-primary">Show</a>
                             <a href="#" class="btn btn-secondary">edit</a>
                             <form action="{{ route('products.destroy', $product) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </div>
                     </div>
