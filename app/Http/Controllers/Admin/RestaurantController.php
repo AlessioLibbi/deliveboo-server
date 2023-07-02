@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -38,7 +41,15 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new = $request->validate();
+        if ($request->hasFile('image_path')) {
+            $path = Storage::disk('public')->put('project_images', $request->image_path);
+            $new['image_path'] = $path;
+        }
+        dd($new);
+        $project = Product::create($new);
+        
+       
     }
 
     /**

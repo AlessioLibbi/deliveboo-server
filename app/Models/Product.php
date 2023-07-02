@@ -9,7 +9,7 @@ class Product extends Model
 {
 
     use HasFactory;
-    protected $fillable = ['name', 'description', 'visibility', 'price'];
+    protected $fillable = ['name', 'description', 'visibility', 'price', 'image_path'];
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);
