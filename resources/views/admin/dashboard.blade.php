@@ -5,21 +5,18 @@
     <div class="container">
         <div class="row justify-content-center my-4">
             <div class="col">
-                @if (session()->has('message'))
-                    <div class="card alert" id="alert">
-                        <div class="card-header">Hello {{ Auth::user()->name }}</div>
 
-                        <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
+                @if (session('message'))
+                    <div class="card-body alert alert-success" id="message">
 
-                            {{ __('You are logged in!') }}
+                        <div role="alert">
+                            {{ session('message') }}
+
                         </div>
                     </div>
                 @endif
+
+
             </div>
             <div class="list position-relative">
                 <div class="card mb-5">
@@ -96,6 +93,4 @@
             </div>
             @yield('content')
         </div>
-
-
     @endsection

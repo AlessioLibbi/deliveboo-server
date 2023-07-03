@@ -29,7 +29,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $username = Auth::user()->name;
+
+        return redirect()->intended(RouteServiceProvider::HOME)->with('message', "Ciao {$username} Ti sei loggato");
     }
 
     /**

@@ -2,11 +2,11 @@ import "./bootstrap";
 import "~resources/scss/app.scss";
 import * as bootstrap from "bootstrap";
 import.meta.glob(["../img/**"]);
-const Error = document.getElementById("alert");
+const message = document.getElementById("message");
 
 function eliminaErrore() {
     setTimeout(() => {
-        Error.classList.add("display-none");
+        message.classList.add("display-none");
     }, 2000);
 }
 
