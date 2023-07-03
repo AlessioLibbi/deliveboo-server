@@ -90,15 +90,18 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $files = scandir($product->image_path); 
-
         $images = array();
-    // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
-        foreach ($files as $file) {
-            $extension = pathinfo($file, PATHINFO_EXTENSION);
-            if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-                $images[] = $product->image_path.'/'.$file;
+        if($product->image_path){
+            $files = scandir($product->image_path); 
+            $pathInit = $product->image_path;
+        // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+            foreach ($files as $file) {
+                $extension = pathinfo($file, PATHINFO_EXTENSION);
+                if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                    $images[] = $file;
+                }
             }
+            return view('admin.products.edit', compact('product', 'images', 'pathInit'));
         }
         return view('admin.products.edit', compact('product', 'images'));
     }
