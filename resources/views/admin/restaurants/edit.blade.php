@@ -6,6 +6,13 @@
         <form action="{{ route('restaurants.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name"
+                    value="{{ old('name', $restaurant->name) }}" required>
+            </div>
+
             <div class="mb-3">
                 <label for="address" class="form-label">Address:</label>
                 <input type="text" class="form-control" id="address" name="address"
@@ -13,9 +20,14 @@
             </div>
 
             <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" class="form-control" id="email" name="email"
+                    value="{{ old('email', $restaurant->email) }}" required>
+            </div>
+
+            <div class="mb-3">
                 <label for="number" class="form-label">Number:</label>
                 <div class="input-group">
-                    <span class="input-group-text">$</span>
                     <input type="number" class="form-control" id="number" name="number" step="0.01"
                         value="{{ old('number', $restaurant->number) }}" required>
                 </div>

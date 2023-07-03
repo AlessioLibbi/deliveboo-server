@@ -33,12 +33,21 @@
                                 <td>{{ $data->address }}</td>
                             </tr>
                             <tr>
+                                <th class="table-dark">Email</th>
+                                <td>{{ $data->email }}</td>
+                            </tr>
+                            <tr>
                                 <th class="table-dark">Number</th>
                                 <td>{{ $data->number }}</td>
                             </tr>
                             <tr>
                                 <th class="table-dark">Partita IVA</th>
                                 <td>{{ $data->PIVA }}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="table-dark">Id</th>
+                                <td>{{ $data->user_id }}</td>
                             </tr>
                         </tbody>
                     </table>

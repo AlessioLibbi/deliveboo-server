@@ -72,6 +72,7 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         $request->validate([
+            'name' => 'required',
             'address' => 'required',
             'number' => 'required',
             'PIVA' => 'required'
