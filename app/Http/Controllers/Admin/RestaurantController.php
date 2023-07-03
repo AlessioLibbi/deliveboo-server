@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cooking;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
@@ -59,7 +60,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $cookings = Cooking::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'cookings'));
     }
 
     /**
@@ -71,23 +73,22 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'address' => 'required',
             'email' => 'required',
             'number' => 'required',
-            'PIVA' => 'required'
+            'PIVA' => 'required',
+            'cooking_id' => 'required'
         ]);
 
-        $restaurant->name = $request->input('name');
-        $restaurant->address = $request->input('address');
-        $restaurant->email = $request->input('email');
-        $restaurant->number = $request->input('number');
-        $restaurant->PIVA = $request->input('PIVA');
+      
 
         // Altre proprietà del ristorante da aggiornare...
-
-        $restaurant->save();
+        if($request->has('cooking_id')){
+            $restaurant->cookings()->sync($data['cooking_id']);
+        }
+        $restaurant->update($data);
 
         return redirect()->route('dashboard', $restaurant->id)
             ->with('success', 'Restaurant updated successfully');
