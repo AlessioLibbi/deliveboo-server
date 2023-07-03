@@ -40,11 +40,11 @@ class ProductController extends Controller
     {   
 
         $validatedData = $request->validated();
+        $validatedData['slug']= Str::slug($validatedData['name']);
         if ($request->hasFile('image_path')) {
             
             // se definiscono le variabile per dopo fare il path per le immagine
             $restaurantId = $validatedData['restaurant_id'];
-            $validatedData['slug']= Str::slug($validatedData['name']);
             $directory =   $restaurantId . '/' . $validatedData['slug'];
             // come si pasa un array se fa un forech per salvare ogni imagine sul codice
             foreach ($request->file('image_path') as $image) {
@@ -54,7 +54,7 @@ class ProductController extends Controller
             $validatedData['image_path'] = 'storage' . '/' .$directory;
             
         }
-        $project = Product::create($validatedData);
+        $product = Product::create($validatedData);
         return redirect()->route('dashboard');
     }
 
@@ -66,17 +66,19 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // questa variabile prende come valore un array con tutti le imagine dil prodotto 
-        $files = scandir($product->image_path); 
-
-            $images = array();
-        // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
-            foreach ($files as $file) {
-                $extension = pathinfo($file, PATHINFO_EXTENSION);
-                if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-                    $images[] = $product->image_path.'/'.$file;
+        $images = array();
+        if($product->image_path){
+            // questa variabile prende come valore un array con tutti le imagine dil prodotto 
+            $files = scandir($product->image_path); 
+    
+            // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+                foreach ($files as $file) {
+                    $extension = pathinfo($file, PATHINFO_EXTENSION);
+                    if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                        $images[] = $product->image_path.'/'.$file;
+                    }
                 }
-            }
+        }
         return view('admin.products.show', compact('product', 'images'));
     }
 

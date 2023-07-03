@@ -52,7 +52,7 @@
             @foreach ($images as $image)
                 <div class="productImg position-relative" style="width: 300px">
                     <img src="{{ asset($image) }}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
-                    <form action="{{ route('delete.img', urlencode($image)) }}" method="POST" style="display: inline;">
+                    <form action="{{ route('delete.img', $image) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger position-absolute top-0 end-0 m-2">x</button>
