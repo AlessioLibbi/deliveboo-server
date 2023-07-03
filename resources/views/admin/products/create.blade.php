@@ -8,7 +8,7 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name"
-                    required>
+                    required value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -26,14 +26,15 @@
                 <div>Available:</div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
-                        name="visibility" id="visibility_yes" value="1" checked>
+                        name="visibility" id="visibility_yes" value="1" checked
+                        {{ old('visibility') == '1' ? 'checked' : '' }}>
                     <label class="form-check-label" for="visibility_yes">
                         yes
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
-                        name="visibility" id="visibility_no" value="0">
+                        name="visibility" id="visibility_no" value="0" {{ old('visibility') == '0' ? 'checked' : '' }}>
                     <label class="form-check-label" for="visibility_no">
                         no
                     </label>
@@ -50,7 +51,7 @@
                 <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" step="0.01" required>
+                        name="price" step="0.01" required value="{{ old('price') }}">
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -61,7 +62,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" required></textarea>
+                <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
