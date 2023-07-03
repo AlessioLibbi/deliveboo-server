@@ -38,7 +38,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {   
-
         $validatedData = $request->validated();
         $validatedData['slug']= Str::slug($validatedData['name']);
         if ($request->hasFile('image_path')) {
@@ -120,7 +119,7 @@ class ProductController extends Controller
         if ($request->hasFile('image_path')) {
             // se definiscono le variabile per dopo fare il path per le immagine
             $restaurantId = $validatedData['restaurant_id'];
-            $validatedData['slug']= Str::slug($validatedData['name']);
+            $validatedData['slug']= $product->slug;
             $directory =   $restaurantId . '/' . $validatedData['slug'];
             // come si pasa un array se fa un forech per salvare ogni imagine sul codice
             foreach ($request->file('image_path') as $image) {
