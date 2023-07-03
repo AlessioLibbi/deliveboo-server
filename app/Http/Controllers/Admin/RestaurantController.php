@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
+
 
 class RestaurantController extends Controller
 {
@@ -18,7 +19,7 @@ class RestaurantController extends Controller
     {
         
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +28,7 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        return view('admin.restaurants.create');
+        
     }
 
     /**
@@ -38,7 +39,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

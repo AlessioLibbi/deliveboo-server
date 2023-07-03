@@ -19,7 +19,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -75,12 +74,11 @@
                         </ul>
                     </div>
                 </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto" style="height: calc(100vh - 56px)">
                     @yield('content')
                 </main>
             </div>
         </div>
     </div>
-    
 </body>
             
