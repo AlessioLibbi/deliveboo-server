@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('products', ProductController::class);
-    Route::delete('/delete-image/{path}', [DeleteImg::class, 'eliminarImage'])->name('delete.img');
+    Route::delete('/delete-image/{path}', [DeleteImg::class, 'delete'])->name('delete.img');
 });
 
 
