@@ -67,14 +67,14 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // questa variabile prende come valore un array con tutti le imagine dil prodotto 
-        $archivos = scandir($product->image_path); 
+        $files = scandir($product->image_path); 
 
             $images = array();
         // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
-            foreach ($archivos as $archivo) {
-                $extension = pathinfo($archivo, PATHINFO_EXTENSION);
+            foreach ($files as $file) {
+                $extension = pathinfo($file, PATHINFO_EXTENSION);
                 if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-                    $images[] = $product->image_path.'/'.$archivo;
+                    $images[] = $product->image_path.'/'.$file;
                 }
             }
         return view('admin.products.show', compact('product', 'images'));
@@ -86,9 +86,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $files = scandir($product->image_path); 
+
+        $images = array();
+    // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+        foreach ($files as $file) {
+            $extension = pathinfo($file, PATHINFO_EXTENSION);
+            if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                $images[] = $product->image_path.'/'.$file;
+            }
+        }
+        return view('admin.products.edit', compact('product', 'images'));
     }
 
     /**
@@ -98,9 +108,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request,Product $product)
     {
-        //
+        
+        $validatedData = $request->validated();
+        if ($request->hasFile('image_path')) {
+            // se definiscono le variabile per dopo fare il path per le immagine
+            $restaurantId = $validatedData['restaurant_id'];
+            $validatedData['slug']= Str::slug($validatedData['name']);
+            $directory =   $restaurantId . '/' . $validatedData['slug'];
+            // come si pasa un array se fa un forech per salvare ogni imagine sul codice
+            foreach ($request->file('image_path') as $image) {
+                $path = $image->store($directory, 'public');
+            }
+            // si salva nel database il path dove si trovano le immagine
+            $validatedData['image_path'] = 'storage' . '/' .$directory;
+        }
+        $product->update($validatedData);
+        return redirect()->route('dashboard');
     }
 
     /**

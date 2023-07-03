@@ -46,7 +46,10 @@
                         <a href="#" class="btn btn-secondary">edit</a>
                     </div>
                 </div>
-
+                <div class="position d-flex justify-content-end mb-5">
+                    <a href="{{ route('products.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>
+                        Products</a>
+                </div>
                 <table class="table table-hover table-bordered text-center">
                     <caption>List of product</caption>
                     <thead>
@@ -77,17 +80,22 @@
                                 <td class="d-none d-md-table-cell">{{ $product->price }}&euro;</td>
                                 <td class="d-none d-lg-table-cell">{{ $product->description }}</td>
                                 <td>
-                                    <a href="#" class="btn my-1 btn-primary">show</a>
-                                    <a href="#" class="btn my-1 btn-secondary">edit</a>
-                                    <a href="#" class="btn my-1 btn-danger">delete</a>
+                                    <a href="{{ route('products.show', $product) }}" class="btn btn-primary">Show</a>
+                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-secondary">Edit</a>
+                                    <form action="{{ route('products.destroy', $product) }}" method="POST"
+                                        style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-        @yield('content')
-    </div>
+            @yield('content')
+        </div>
 
 
-@endsection
+    @endsection
