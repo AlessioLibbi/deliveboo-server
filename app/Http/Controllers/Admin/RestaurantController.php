@@ -17,7 +17,6 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -28,7 +27,7 @@ class RestaurantController extends Controller
     public function create()
     {
         //
-        
+
     }
 
     /**
@@ -39,7 +38,6 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -61,7 +59,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -73,7 +71,26 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'number' => 'required',
+            'PIVA' => 'required'
+        ]);
+
+        $restaurant->name = $request->input('name');
+        $restaurant->address = $request->input('address');
+        $restaurant->email = $request->input('email');
+        $restaurant->number = $request->input('number');
+        $restaurant->PIVA = $request->input('PIVA');
+
+        // Altre proprietà del ristorante da aggiornare...
+
+        $restaurant->save();
+
+        return redirect()->route('dashboard', $restaurant->id)
+            ->with('success', 'Restaurant updated successfully');
     }
 
     /**
