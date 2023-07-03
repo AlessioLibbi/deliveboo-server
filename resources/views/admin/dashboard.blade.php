@@ -43,7 +43,7 @@
                         </tbody>
                     </table>
                     <div class="text-end card-body">
-                        <a href="#" class="btn btn-secondary">edit</a>
+                        <a href="{{ route('restaurants.edit', $data->id) }}" class="btn btn-secondary">Edit</a>
                     </div>
                 </div>
                 <div class="position d-flex justify-content-end mb-5">
