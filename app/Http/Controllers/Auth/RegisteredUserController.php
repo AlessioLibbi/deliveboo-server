@@ -37,6 +37,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'PIVA'=> ['required', 'unique:'.Restaurant::class],
+            'number'=> ['required', 'unique:'.Restaurant::class]
         ]);
 
         $user = User::create([
@@ -51,7 +53,7 @@ class RegisteredUserController extends Controller
             'email'=> $request-> email,
             'number'=> $request-> number,
             'PIVA'=> $request-> PIVA,
-            'slug' => Str::slug($request->restaurant_name, '-'),
+            'slug' => Restaurant::getUniqueSlugFromTitle($request->restaurant_name),
             'user_id' => $user->id
         ]);
 
