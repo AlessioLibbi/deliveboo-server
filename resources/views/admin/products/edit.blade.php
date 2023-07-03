@@ -40,22 +40,6 @@
                 @enderror
             </div>
 
-            {{-- <div class="form-check mb-3">
-                <h4>Available</h4>
-                <div class="div">
-                    <input type="radio" class="form-check-input " id="yes" name="visibility" value="1"
-                        @checked(old('visibility', $product->visibility) == 1)>
-                    <label class="form-check-label" for="yes">yes</label>
-
-                </div>
-                <div class="div">
-
-                    <input type="radio" class="form-check-input" id="visibility" name="visibility" value="0"
-                        @checked(old('visibility', $product->visibility) == 0)>
-                    <label class="form-check-label" for="visibility">no</label>
-                </div>
-            </div> --}}
-
             <div class="mb-3">
                 <label for="price" class="form-label">Price:</label>
                 <div class="input-group">
