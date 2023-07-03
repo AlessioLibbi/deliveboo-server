@@ -38,6 +38,25 @@
                 <textarea class="form-control" id="PIVA" name="PIVA" required>{{ $restaurant->PIVA }}</textarea>
             </div>
 
+            <h4>Tipology</h4>
+            <div class="mb-3 d-flex gap-5">
+                
+                @foreach($cookings as $cooking) 
+                <div class="ms text-center">
+                    <input type="checkbox" class="" id="{{$cooking->name}}" name="cooking_id[]" value="{{$cooking->id}}"
+                    
+                    @foreach($restaurant->cookings as $cookingDefault)
+                        @if($cookingDefault->name == $cooking->name)
+                            checked
+                        @endif
+                    @endforeach
+                    
+                    >
+                    <label for="{{$cooking->name}}" class="form-label">{{$cooking->name}}</label>
+                </div>
+                @endforeach
+            </div>
+
             <button type="submit" class="btn btn-primary mt-3">Edit</button>
         </form>
     </div>
