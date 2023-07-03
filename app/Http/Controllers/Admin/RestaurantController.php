@@ -74,11 +74,14 @@ class RestaurantController extends Controller
         $request->validate([
             'name' => 'required',
             'address' => 'required',
+            'email' => 'required',
             'number' => 'required',
             'PIVA' => 'required'
         ]);
 
+        $restaurant->name = $request->input('name');
         $restaurant->address = $request->input('address');
+        $restaurant->email = $request->input('email');
         $restaurant->number = $request->input('number');
         $restaurant->PIVA = $request->input('PIVA');
 
