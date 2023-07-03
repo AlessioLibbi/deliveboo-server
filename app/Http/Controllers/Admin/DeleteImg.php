@@ -7,10 +7,8 @@ use Illuminate\Support\Facades\File;
 
 class DeleteImg extends Controller
 {
-    public function eliminarImagen($path)
+    public function delete($path)
 {
-    
-
-   
+    dd($path);
 }
 }

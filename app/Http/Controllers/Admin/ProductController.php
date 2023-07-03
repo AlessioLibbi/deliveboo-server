@@ -40,11 +40,11 @@ class ProductController extends Controller
     {   
 
         $validatedData = $request->validated();
+        $validatedData['slug']= Str::slug($validatedData['name']);
         if ($request->hasFile('image_path')) {
             
             // se definiscono le variabile per dopo fare il path per le immagine
             $restaurantId = $validatedData['restaurant_id'];
-            $validatedData['slug']= Str::slug($validatedData['name']);
             $directory =   $restaurantId . '/' . $validatedData['slug'];
             // come si pasa un array se fa un forech per salvare ogni imagine sul codice
             foreach ($request->file('image_path') as $image) {
@@ -54,7 +54,7 @@ class ProductController extends Controller
             $validatedData['image_path'] = 'storage' . '/' .$directory;
             
         }
-        $project = Product::create($validatedData);
+        $product = Product::create($validatedData);
         return redirect()->route('dashboard');
     }
 
