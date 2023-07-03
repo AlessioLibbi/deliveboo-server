@@ -40,7 +40,7 @@ class StoreProductRequest extends FormRequest
             'visibility' => 'required',
             'description' => ['required', 'min:3', 'max:150'],
             'slug'=> 'nullable',
-            'image_path' => 'required',
+            'image_path' => 'nullable',
             'restaurant_id' => 'required'
         ];
     }
