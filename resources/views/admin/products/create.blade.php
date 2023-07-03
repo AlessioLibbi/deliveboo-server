@@ -7,7 +7,13 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name"
+                    required>
+                @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -18,13 +24,13 @@
             <div class="form-check mb-3">
                 <h4>Available</h4>
                 <div class="div">
-                    <input type="radio" class="form-check-input " id="yes" name="visibility" value="1" >
+                    <input type="radio" class="form-check-input " id="yes" name="visibility" value="1">
                     <label class="form-check-label" for="yes">yes</label>
 
                 </div>
                 <div class="div">
 
-                    <input type="radio" class="form-check-input" id="visibility" name="visibility" value="0" >
+                    <input type="radio" class="form-check-input" id="visibility" name="visibility" value="0">
                     <label class="form-check-label" for="visibility">no</label>
                 </div>
             </div>
