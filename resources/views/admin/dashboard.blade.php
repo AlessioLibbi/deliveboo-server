@@ -30,6 +30,10 @@
                                 <td>{{ $data->address }}</td>
                             </tr>
                             <tr>
+                                <th class="table-dark">Email</th>
+                                <td>{{ $data->email }}</td>
+                            </tr>
+                            <tr>
                                 <th class="table-dark">Number</th>
                                 <td>{{ $data->number }}</td>
                             </tr>
@@ -37,10 +41,15 @@
                                 <th class="table-dark">Partita IVA</th>
                                 <td>{{ $data->PIVA }}</td>
                             </tr>
+
+                            <tr>
+                                <th class="table-dark">Id</th>
+                                <td>{{ $data->user_id }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="text-end card-body">
-                        <a href="#" class="btn btn-secondary">edit</a>
+                        <a href="{{ route('restaurants.edit', $data->id) }}" class="btn btn-secondary">Edit</a>
                     </div>
                 </div>
                 <div class="position d-flex justify-content-end mb-5">
