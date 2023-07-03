@@ -51,7 +51,7 @@
                 <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" step="0.01" required value="{{ old('price') }}">
+                        name="price" step="0.01" min="0" max="500" required value="{{ old('price') }}">
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
