@@ -37,7 +37,7 @@ class StoreProductRequest extends FormRequest
         return [
             'name' => ['required', 'min:3', 'max:150'],
             'price' => ['required', 'numeric', 'min:0', 'max:500'],
-            'visibility' => 'required',
+            'visibility' => ['required',],
             'description' => ['required', 'min:3', 'max:255'],
             'slug' => 'nullable',
             'image_path' => 'nullable',
@@ -56,10 +56,12 @@ class StoreProductRequest extends FormRequest
             'name.required' => 'Il nome è richiesto',
             'name.max' => 'Il nome deve essere lungo massimo :max caratteri',
             'name.min' => 'Il nome deve essere lungo almeno :min caratteri',
+
             'price.required' => 'Il prezzo è richiesto',
             'price.numeric' => 'Il prezzo deve essere un valore numerico',
             'price.max' => 'Il prezzo non può essere superiore a :max',
             'price.min' => 'Il prezzo non può essere negativo',
+
             'visibility.required' => 'Seleziona un campo',
 
             'description.required' => 'La descrizione è richiesta',
