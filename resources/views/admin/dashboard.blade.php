@@ -38,7 +38,7 @@
                                 <td>{{ $data->number }}</td>
                             </tr>
                             <tr>
-                                <th class="table-dark">Partita IVA</th>
+                                <th class="table-dark">VAT Number</th>
                                 <td>{{ $data->PIVA }}</td>
                             </tr>
 

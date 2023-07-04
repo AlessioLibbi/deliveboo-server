@@ -34,7 +34,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="PIVA" class="form-label">PIVA:</label>
+                <label for="PIVA" class="form-label">VAT Number:</label>
                 <textarea class="form-control" id="PIVA" name="PIVA" required>{{ $restaurant->PIVA }}</textarea>
             </div>
 

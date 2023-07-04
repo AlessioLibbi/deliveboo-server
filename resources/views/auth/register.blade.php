@@ -65,7 +65,7 @@
 {{-- ------------------------------------- NUOVO FORM --}}
 
                         <div class="mb-4 row">
-                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">nome ristorante</label>
+                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Restaurant Name</label>
 
                             <div class="col-md-6">
                                 <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">address</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required>
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="number" class="col-md-4 col-form-label text-md-right">numero</label>
+                            <label for="number" class="col-md-4 col-form-label text-md-right">Number</label>
 
                             <div class="col-md-6">
                                 <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" required>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">Partita IVA</label>
+                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number</label>
 
                             <div class="col-md-6">
                                 <input id="PIVA" type="text" class="form-control @error('PIVA') is-invalid @enderror" name="PIVA" required>

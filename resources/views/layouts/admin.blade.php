@@ -111,7 +111,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('restaurants.show', Auth::id())}}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Il mio ristorante
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> My Restaurant
                                 </a>
                             </li>
                         </ul>
