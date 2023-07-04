@@ -17,12 +17,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="img_path" class="form-label">Image Path:</label>
-                <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
-            </div>
-
-
-            <div class="mb-3">
                 <div>Available:</div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
@@ -70,6 +64,10 @@
                 @enderror
             </div>
 
+            <div class="mb-3">
+                <label for="img_path" class="form-label">Image Path:</label>
+                <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
+            </div>
 
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>

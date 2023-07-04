@@ -8,8 +8,8 @@
                 <h5 class="card-title">{{ $restaurantShow->name }}</h5>
                 <p class="card-text"><strong>Address:</strong> {{ $restaurantShow->address }}</p>
                 <p class="card-text"><strong>Phone:</strong> {{ $restaurantShow->number }}</p>
-                <p class="card-text"><strong>PIVA:</strong> {{ $restaurantShow->PIVA }}</p>
-                <strong>tipology</strong>
+                <p class="card-text"><strong>VAT Number:</strong> {{ $restaurantShow->PIVA }}</p>
+                <strong>Tipology</strong>
                 <ul>
                     @foreach ($restaurantShow->cookings as $cookingDefault)
                         <li>{{ $cookingDefault->name }}</li>

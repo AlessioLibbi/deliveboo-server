@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cooking;
 use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -23,7 +24,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $cookings = Cooking::all();
+        return view('auth.register', compact('cookings'));
     }
 
     /**
@@ -33,16 +35,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'restaurant_name' => ['required', 'string'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'PIVA'=> ['required', 'unique:'.Restaurant::class],
-            'number'=> ['required', 'unique:'.Restaurant::class]
+            'PIVA' => ['required', 'unique:' . Restaurant::class],
+            'number' => ['required', 'unique:' . Restaurant::class]
         ]);
-        
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -50,14 +52,17 @@ class RegisteredUserController extends Controller
         ]);
 
         $restaurant = Restaurant::create([
-            'name' => $request-> restaurant_name,
-            'address' => $request-> address,
-            'email'=> $request-> email,
-            'number'=> $request-> number,
-            'PIVA'=> $request-> PIVA,
+            'name' => $request->restaurant_name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'number' => $request->number,
+            'PIVA' => $request->PIVA,
             'slug' => Restaurant::getUniqueSlugFromTitle($request->restaurant_name),
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
+        if ($request->has('cooking_id')) {
+            $restaurant->cookings()->attach($request->cooking_id);
+        }
 
         event(new Registered($user));
 
@@ -65,5 +70,4 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-    
 }

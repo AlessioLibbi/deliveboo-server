@@ -38,7 +38,7 @@
                                 <td>{{ $data->number }}</td>
                             </tr>
                             <tr>
-                                <th class="table-dark">Partita IVA</th>
+                                <th class="table-dark">VAT Number</th>
                                 <td>{{ $data->PIVA }}</td>
                             </tr>
 
@@ -78,9 +78,9 @@
                                 <td >{{ $product->name }}</td>
                                 <td>
                                     @if ($product->visibility === 1)
-                                        true
+                                        Available
                                     @else
-                                        false
+                                        Not Available
                                     @endif
                                 </td>
                                 <td class="d-none d-md-table-cell">{{ $product->price }}&euro;</td>
