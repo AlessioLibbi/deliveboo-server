@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -65,7 +65,7 @@
 {{-- ------------------------------------- NUOVO FORM --}}
 
                         <div class="mb-4 row">
-                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Restaurant Name</label>
+                            <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Restaurant Name <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
@@ -78,7 +78,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Address <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required>
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="number" class="col-md-4 col-form-label text-md-right">Number</label>
+                            <label for="number" class="col-md-4 col-form-label text-md-right">Number <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" required>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number</label>
+                            <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="PIVA" type="text" class="form-control @error('PIVA') is-invalid @enderror" name="PIVA" required>
@@ -115,9 +115,22 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="mb-4 row">
+                            <span class="col-md-4 col-form-label text-md-right">Cookings</span>
+                            <div class="col-md-6">
+
+                                @foreach ($cookings as $cooking)
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="{{ $cooking->name }}" name="cooking_id[]" value="{{ $cooking->id }}">
+                                    <label for="{{ $cooking->name }}" class="form-check-label">{{ $cooking->name }}</label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                         {{-- -----------FINE NUOVO FORM --}}
                         <div class="mb-4 row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 text-end">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
