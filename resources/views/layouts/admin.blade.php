@@ -22,7 +22,50 @@
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
 
+    .container {
+        max-width: 600px;
+        margin-top: 50px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        margin-bottom: 10px;
+    }
+
+    .card-text strong {
+        font-weight: bold;
+    }
+
+    .card-text a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
 <body>
     <div id="app">
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
@@ -67,7 +110,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('restaurants.index')}}">
+                                    href="{{ route('restaurants.show', Auth::id())}}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Il mio ristorante
                                 </a>
                             </li>
