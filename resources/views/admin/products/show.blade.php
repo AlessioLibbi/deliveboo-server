@@ -4,17 +4,15 @@
 <div class="center d-flex justify-content-center overflow-hidden my-5">
     <div id="carouselExampleIndicators" class="carousel slide w-50" data-bs-ride="carousel" style="height: 300px;">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            @foreach ($images as $index => $image)
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="active"
+                aria-current="true" aria-label="Slide {{ $index }}"></button>
+        @endforeach
         </div>
         <div class="carousel-inner">
             @foreach ($images as $index => $image)
                 <div class="carousel-item @if ($index === 0) active @endif">
-                    <img src="{{ asset($image) }}" alt="Imagen {{ $index + 1 }}"
+                    <img src="{{ asset($image) }}" alt="Imagen {{ $index }}"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             @endforeach
