@@ -22,16 +22,12 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
                         name="visibility" id="visibility_yes" value="1" @checked(old('visibility', $product->visibility) == 1)>
-                    <label class="form-check-label" for="visibility_yes">
-                        yes
-                    </label>
+                    <label class="form-check-label" for="visibility_yes"> yes</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
                         name="visibility" id="visibility_no" value="0" @checked(old('visibility', $product->visibility) == 0)>
-                    <label class="form-check-label" for="visibility_no">
-                        no
-                    </label>
+                    <label class="form-check-label" for="visibility_no">no</label>
                 </div>
                 @error('visibility')
                     <div class="text-danger">
