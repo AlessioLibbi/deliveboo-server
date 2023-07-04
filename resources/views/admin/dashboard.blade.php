@@ -78,9 +78,9 @@
                                 <td >{{ $product->name }}</td>
                                 <td>
                                     @if ($product->visibility === 1)
-                                        true
+                                        Available
                                     @else
-                                        false
+                                        Not Available
                                     @endif
                                 </td>
                                 <td class="d-none d-md-table-cell">{{ $product->price }}&euro;</td>
