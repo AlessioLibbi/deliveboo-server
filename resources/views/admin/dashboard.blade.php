@@ -70,12 +70,12 @@
                     </thead>
                     <tbody>
                         @foreach ($products as $product)
-                            <tr>
+                            <tr class="align-middle">
                                 <td class="d-none d-xl-table-cell">
-                                    <img src="{{ asset('img/vinicius-benedit--1GEAA8q3wk-unsplash.jpg') }}" alt=""
-                                        class="img-fluid rounded" style="max-width: 200px;">
+                                    <img src="{{ asset('img/images.png') }}" alt=""
+                                        class="img-fluid rounded" style="max-width: 100px;">
                                 </td>
-                                <td>{{ $product->name }}</td>
+                                <td >{{ $product->name }}</td>
                                 <td>
                                     @if ($product->visibility === 1)
                                         true
