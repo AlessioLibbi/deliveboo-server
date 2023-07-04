@@ -11,7 +11,7 @@ class DeleteImg extends Controller
 {
     public function delete($id)
 {
-    $cancelPer = str_replace('%%', '/', $id);
+    $cancelPer = str_replace('chance', '/', $id);
     $pathImage = 'public/'.$cancelPer;
     Storage::delete($pathImage);
     return back();

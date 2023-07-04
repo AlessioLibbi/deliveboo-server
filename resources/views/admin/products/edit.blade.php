@@ -77,7 +77,7 @@
                     <img src="{{ asset($pathInit . '/' . $image) }}" alt=""
                         style="width: 100%; height: 100%; object-fit: cover;">
                     <form
-                        action="{{ route('delete.img', [$product->restaurant_id . '%%' . $product->slug . '%%' . $image]) }}"
+                        action="{{ route('delete.img', [$product->restaurant_id .'chance'. $product->slug.'chance'.$image]) }}"
                         method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
