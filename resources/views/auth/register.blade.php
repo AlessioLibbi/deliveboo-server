@@ -68,7 +68,7 @@
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">nome ristorante</label>
 
                             <div class="col-md-6">
-                                <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name">
+                                <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
                                 @error('restaurant_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -81,7 +81,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required>
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
                             <label for="number" class="col-md-4 col-form-label text-md-right">numero</label>
 
                             <div class="col-md-6">
-                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number">
+                                <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" required>
                                 @error('number')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -107,7 +107,7 @@
                             <label for="PIVA" class="col-md-4 col-form-label text-md-right">Partita IVA</label>
 
                             <div class="col-md-6">
-                                <input id="PIVA" type="text" class="form-control @error('PIVA') is-invalid @enderror" name="PIVA">
+                                <input id="PIVA" type="text" class="form-control @error('PIVA') is-invalid @enderror" name="PIVA" required>
                                 @error('PIVA')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
