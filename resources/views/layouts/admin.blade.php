@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ Vite::asset('resources/img/favicon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -144,22 +142,6 @@
             </div>
         </div>
     </div>
-    <script>
-        const deleteBtns = document.querySelectorAll(".btn-delete");
-        if (deleteBtns.length > 0) {
-            deleteBtns.forEach((btn) => {
-                btn.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    const productName = btn.getAttribute("data-product-name");
-                    const deleteModal = new bootstrap.Modal(document.getElementById("delete-modal"));
-                    document.getElementById("product-name").innerText = productName;
-                    document.getElementById("action-delete").addEventListener("click", function() {
-                        btn.parentElement.submit();
-                    });
-                    deleteModal.show();
-                });
-            });
-        }
-    </script>
+    
 </body>
             
