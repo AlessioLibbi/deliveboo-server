@@ -20,6 +20,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Usando Vite -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     @vite(['resources/js/app.js'])
 </head>
 <style>
@@ -123,5 +126,40 @@
             </div>
         </div>
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="delete-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Warning!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you Want Delete this element<span id="product-name"></span>?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="action-delete" type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const deleteBtns = document.querySelectorAll(".btn-delete");
+        if (deleteBtns.length > 0) {
+            deleteBtns.forEach((btn) => {
+                btn.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const productName = btn.getAttribute("data-product-name");
+                    const deleteModal = new bootstrap.Modal(document.getElementById("delete-modal"));
+                    document.getElementById("product-name").innerText = productName;
+                    document.getElementById("action-delete").addEventListener("click", function() {
+                        btn.parentElement.submit();
+                    });
+                    deleteModal.show();
+                });
+            });
+        }
+    </script>
 </body>
             

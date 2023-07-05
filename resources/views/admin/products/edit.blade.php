@@ -77,7 +77,7 @@
                         method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger position-absolute top-0 end-0 m-2">x</button>
+                        <button  class="btn btn-danger position-absolute top-0 end-0 m-2 btn-delete">x</button>
                     </form>
                 </div>
             @endforeach
