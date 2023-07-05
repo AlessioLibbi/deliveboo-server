@@ -36,4 +36,6 @@
     <p>{{ $product->description }}</p>
 </div>
 
+<a href="{{url()->previous()}}" class="btn btn-warning">Indietro</a>
+
 @endsection
