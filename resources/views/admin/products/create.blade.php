@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Add Product</h1>
+        <h2 class="mb-4">Add Product</h2>
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -70,6 +70,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Add Product</button>
+            <a href="{{url()->previous()}}" class="btn btn-warning">Indietro</a>
         </form>
     </div>
 @endsection

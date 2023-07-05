@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Edit {{ $restaurant->name }}</h1>
+        <h2 class="mb-4">Edit {{ $restaurant->name }}</h2>
         <form action="{{ route('restaurants.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -40,9 +40,9 @@
 
             <div class="card">
                 
-                <span class="input-group-text mb-3">Tipology</span>
+                <span class="card-header my-1">Tipology</span>
                 @foreach ($cookings as $cooking)
-                <div class="form-check mx-3">
+                <div class="form-check mx-3 ">
                     <input type="checkbox" class="form-check-input" id="{{ $cooking->name }}" name="cooking_id[]" value="{{ $cooking->id }}"
                     @foreach ($restaurant->cookings as $cookingDefault)
                     @if ($cookingDefault->name == $cooking->name)
