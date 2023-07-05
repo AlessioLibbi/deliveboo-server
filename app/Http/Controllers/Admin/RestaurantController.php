@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateRestaurantRequest;
 use App\Models\Cooking;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
@@ -82,19 +83,9 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'number' => 'required',
-            'PIVA' => 'required',
-            'cooking_id' => 'required'
-        ]);
-
-      
-
+        $data = $request->validated();
         // Altre proprietà del ristorante da aggiornare...
         if($request->has('cooking_id')){
             $restaurant->cookings()->sync($data['cooking_id']);
