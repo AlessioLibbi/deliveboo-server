@@ -47,9 +47,15 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show( $restaurant)
-    {
+    { 
+        $id = Auth::id();
         $restaurantShow = Restaurant::findOrFail($restaurant);
-        return view('admin.restaurants.show', compact('restaurantShow'));
+        if($id == $restaurantShow->user_id){
+            return view('admin.restaurants.show', compact('restaurantShow'));
+        } else {
+            return view('admin.hacker.sofia');
+        }
+        
     }
 
     /**
