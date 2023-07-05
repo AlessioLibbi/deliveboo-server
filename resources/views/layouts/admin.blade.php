@@ -19,86 +19,62 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Usando Vite -->
-    
+
 
     @vite(['resources/js/app.js'])
 </head>
-<style>
-    body {
-        background-color: #f8f9fa;
-    }
 
-    .container {
-        max-width: 600px;
-        margin-top: 50px;
-    }
-
-    .card {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-img-top {
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-    }
-
-    .card-body {
-        padding: 20px;
-    }
-
-    .card-title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .card-text {
-        margin-bottom: 10px;
-    }
-
-    .card-text strong {
-        font-weight: bold;
-    }
-
-    .card-text a {
-        color: #007bff;
-        text-decoration: none;
-    }
-</style>
 <body>
     <div id="app">
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-            <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Deliveboo</a>
-                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-                    aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">Deliveboo</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            </div>
-            <div class="nav-item dropdown text-white">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
-                    <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                <div class="collapse navbar-collapse">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                        </li> --}}
+                    </ul>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown2" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu" style="left:-90px"
+                                aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                            </div>
+                        </li>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </ul>
                 </div>
             </div>
-        </header>
+    </div>
 
-        <div class="container-fluid " style="height: calc(100vh - 56px)">
+    </nav>
+
+    <div>
+        <div class="container mt-0">
+
             <div class="row h-100">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
@@ -111,18 +87,20 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('restaurants.show', Auth::id())}}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> My Restaurant
+                                    href="{{ route('restaurants.show', Auth::id()) }}">
+                                    <i class="fa-solid fa-utensils"></i> My Restaurant
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto" style="height: calc(100vh - 56px)">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
                     @yield('content')
                 </main>
             </div>
         </div>
+
+    </div>
     </div>
     <div class="modal" tabindex="-1" role="dialog" id="delete-modal">
         <div class="modal-dialog">
@@ -142,6 +120,5 @@
             </div>
         </div>
     </div>
-    
+
 </body>
-            
