@@ -18,17 +18,19 @@
                 @enderror
             </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-text">Available</div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
+            <div class="card mb-3">
+                <div class="card-header">Available</div>
+                <div class="form-check-inline my-1">
+                    <div class="form-check form-check-inline mx-3">
+                        <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
                         name="visibility" id="visibility_yes" value="1" @checked(old('visibility', $product->visibility) == 1)>
-                    <label class="form-check-label" for="visibility_yes"> yes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
+                        <label class="form-check-label" for="visibility_yes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline mx-3">
+                        <input class="form-check-input @error('visibility') is-invalid @enderror" type="radio"
                         name="visibility" id="visibility_no" value="0" @checked(old('visibility', $product->visibility) == 0)>
-                    <label class="form-check-label" for="visibility_no">no</label>
+                        <label class="form-check-label" for="visibility_no">No</label>
+                    </div>
                 </div>
                 @error('visibility')
                     <div class="text-danger">
