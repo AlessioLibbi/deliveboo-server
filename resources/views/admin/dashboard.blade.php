@@ -72,10 +72,10 @@
                         @foreach ($products as $product)
                             <tr class="align-middle">
                                 <td class="d-none d-xl-table-cell">
-                                    <img src="{{ asset('img/images.png') }}" alt=""
-                                        class="img-fluid rounded" style="max-width: 100px;">
+                                    <img src="{{ asset('img/images.png') }}" alt="" class="img-fluid rounded"
+                                        style="max-width: 100px;">
                                 </td>
-                                <td >{{ $product->name }}</td>
+                                <td>{{ $product->name }}</td>
                                 <td>
                                     @if ($product->visibility === 1)
                                         Available
@@ -92,7 +92,7 @@
                                         style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button  class="btn btn-danger btn-delete">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -102,4 +102,5 @@
             </div>
             @yield('content')
         </div>
+
     @endsection
