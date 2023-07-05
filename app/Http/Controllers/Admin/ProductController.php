@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreProductRequest;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -65,20 +67,25 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $images = array();
-        if($product->image_path){
-            // questa variabile prende come valore un array con tutti le imagine dil prodotto 
-            $files = scandir($product->image_path); 
-    
-            // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
-                foreach ($files as $file) {
-                    $extension = pathinfo($file, PATHINFO_EXTENSION);
-                    if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-                        $images[] = $product->image_path.'/'.$file;
+        $restaurant = Restaurant::findOrFail(Auth::id())->id;
+        if($restaurant == $product->restaurant_id){
+            $images = array();
+            if($product->image_path){
+                // questa variabile prende come valore un array con tutti le imagine dil prodotto 
+                $files = scandir($product->image_path); 
+        
+                // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+                    foreach ($files as $file) {
+                        $extension = pathinfo($file, PATHINFO_EXTENSION);
+                        if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                            $images[] = $product->image_path.'/'.$file;
+                        }
                     }
-                }
+            }
+            return view('admin.products.show', compact('product', 'images'));
+        } else {
+            return view('admin.hacker.sofia');
         }
-        return view('admin.products.show', compact('product', 'images'));
     }
 
     /**
@@ -89,20 +96,25 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $images = array();
-        if($product->image_path){
-            $files = scandir($product->image_path); 
-            $pathInit = $product->image_path;
-        // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
-            foreach ($files as $file) {
-                $extension = pathinfo($file, PATHINFO_EXTENSION);
-                if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
-                    $images[] = $file;
+        $restaurant = Restaurant::findOrFail(Auth::id())->id;
+        if($restaurant == $product->restaurant_id){
+            $images = array();
+            if($product->image_path){
+                $files = scandir($product->image_path); 
+                $pathInit = $product->image_path;
+            // se fa el forech para creare il path per dopo caricare le imagine e si controlla che prenda sul tanto tipo imagine
+                foreach ($files as $file) {
+                    $extension = pathinfo($file, PATHINFO_EXTENSION);
+                    if ($extension === 'jpg' || $extension === 'jpeg' || $extension === 'png') {
+                        $images[] = $file;
+                    }
                 }
+                return view('admin.products.edit', compact('product', 'images', 'pathInit'));
             }
-            return view('admin.products.edit', compact('product', 'images', 'pathInit'));
+            return view('admin.products.edit', compact('product', 'images'));
+        } else {
+            return view('admin.hacker.sofia');
         }
-        return view('admin.products.edit', compact('product', 'images'));
     }
 
     /**

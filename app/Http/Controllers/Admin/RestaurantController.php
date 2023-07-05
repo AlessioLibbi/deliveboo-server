@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cooking;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -48,9 +47,15 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show( $restaurant)
-    {
+    { 
+        $id = Auth::id();
         $restaurantShow = Restaurant::findOrFail($restaurant);
-        return view('admin.restaurants.show', compact('restaurantShow'));
+        if($id == $restaurantShow->user_id){
+            return view('admin.restaurants.show', compact('restaurantShow'));
+        } else {
+            return view('admin.hacker.sofia');
+        }
+        
     }
 
     /**
@@ -61,8 +66,13 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        $cookings = Cooking::all();
-        return view('admin.restaurants.edit', compact('restaurant', 'cookings'));
+        $id = Auth::id();
+        if($id == $restaurant->user_id){
+            $cookings = Cooking::all();
+            return view('admin.restaurants.edit', compact('restaurant', 'cookings'));
+        } else {
+            return view('admin.hacker.sofia');
+        }
     }
 
     /**
