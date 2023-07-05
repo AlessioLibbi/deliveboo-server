@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    ///funzione d esempio
+    ///CHIAMATA DEI RISTORANTI FILTRATI PER TIPOLOGIA CUCINA
     public function index($nameCooking)
     {
         $filtered_restaurants = Restaurant::whereHas('cookings', function ($query) use ($nameCooking) {
             $query->where('name', $nameCooking);
-        })->get();
+        })->with('cookings')->get();
 
         return response()->json([
             'success' => true,
