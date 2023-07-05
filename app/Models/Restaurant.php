@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'address', 'email', 'number', 'PIVA', 'slug', 'user_id'];
+    protected $fillable = ['name', 'address', 'email', 'number', 'PIVA', 'slug', 'user_id',];
     public function cookings()
     {
         return $this->belongsToMany(Cooking::class);
@@ -23,7 +24,8 @@ class Restaurant extends Model
         return $this->hasOne(User::class);
     }
 
-    public static function getUniqueSlugFromTitle($title) {
+    public static function getUniqueSlugFromTitle($title)
+    {
         // Controlliamo se esiste già un post con questo slug
         // Se esiste, aggiungo -1
         // Controllo e se esiste, aggiungo -2 

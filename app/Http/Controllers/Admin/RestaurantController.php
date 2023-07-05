@@ -46,16 +46,15 @@ class RestaurantController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function show( $restaurant)
-    { 
+    public function show($restaurant)
+    {
         $id = Auth::id();
         $restaurantShow = Restaurant::findOrFail($restaurant);
-        if($id == $restaurantShow->user_id){
+        if ($id == $restaurantShow->user_id) {
             return view('admin.restaurants.show', compact('restaurantShow'));
         } else {
             return view('admin.hacker.sofia');
         }
-        
     }
 
     /**
@@ -67,7 +66,7 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
         $id = Auth::id();
-        if($id == $restaurant->user_id){
+        if ($id == $restaurant->user_id) {
             $cookings = Cooking::all();
             return view('admin.restaurants.edit', compact('restaurant', 'cookings'));
         } else {
@@ -93,10 +92,10 @@ class RestaurantController extends Controller
             'cooking_id' => 'required'
         ]);
 
-      
+
 
         // Altre proprietà del ristorante da aggiornare...
-        if($request->has('cooking_id')){
+        if ($request->has('cooking_id')) {
             $restaurant->cookings()->sync($data['cooking_id']);
         }
         $restaurant->update($data);

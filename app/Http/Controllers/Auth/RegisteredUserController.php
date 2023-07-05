@@ -42,7 +42,8 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'PIVA' => ['required', 'unique:' . Restaurant::class],
-            'number' => ['required', 'unique:' . Restaurant::class]
+            'number' => ['required', 'unique:' . Restaurant::class],
+
         ]);
 
         $user = User::create([
@@ -59,7 +60,9 @@ class RegisteredUserController extends Controller
             'PIVA' => $request->PIVA,
             'slug' => Restaurant::getUniqueSlugFromTitle($request->restaurant_name),
             'user_id' => $user->id,
+
         ]);
+
         if ($request->has('cooking_id')) {
             $restaurant->cookings()->attach($request->cooking_id);
         }
