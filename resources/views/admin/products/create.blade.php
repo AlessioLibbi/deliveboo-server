@@ -7,8 +7,11 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name"
+                <input type="text" class="form-control min @error('name') is-invalid @enderror" id="name" name="name"
                     required value="{{ old('name') }}">
+                    <div class="message-min d-none">
+                        <span class="text-danger">* Min 3 caracters</span>
+                    </div>
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -56,7 +59,10 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
-                <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description') }}</textarea>
+                <textarea class="form-control min @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description') }}</textarea>
+                <div class="message-min d-none">
+                    <span class="text-danger">* Min 3 caracters</span>
+                </div>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}

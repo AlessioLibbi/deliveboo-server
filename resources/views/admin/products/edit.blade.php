@@ -6,11 +6,13 @@
         <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="input-group mb-3">
-                <label for="name" class="input-group-text">Name</label>
-                
-                <input type="text" class="form-control   @error('name') is-invalid @enderror" id="name" name="name"
-                value="{{ old('name', $product->name) }}" required>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control min  @error('name') is-invalid @enderror" id="name" name="name"
+                    value="{{ old('name', $product->name) }}" required>
+                <div class="message-min d-none">
+                    <span class="text-danger">* Min 3 caracters</span>
+                </div>
                 @error('name')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -53,9 +55,13 @@
                 @enderror
             </div>
 
-            <div class="input-group mb-3">
-                <label for="description" class="input-group-text">Description</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description', $product->description) }}</textarea>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea class="form-control min @error('description') is-invalid @enderror" id="description" name="description"
+                    required>{{ old('description', $product->description) }}</textarea>
+                <div class="message-min d-none">
+                    <span class="text-danger">* Min 3 caracters</span>
+                </div>
                 @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -67,7 +73,7 @@
                 <label for="img_path" class="input-group-text">Upload images</label>
                 <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
             </div>
-            <button type="submit" class="btn btn-primary">Edit</button>
+            <button type="submit" id="submit" class="btn btn-primary mt-3">Edit</button>
             <a href="{{ url()->previous() }}" class="btn btn-warning">Indietro</a>
         </form>
         <div class="d-flex w-100 overflow-auto mt-3">
