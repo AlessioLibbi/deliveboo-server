@@ -6,12 +6,12 @@
         <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
+            <div class="input-group mb-3">
+                <label for="name" class="input-group-text">Name</label>
                 <input type="text" class="form-control min  @error('name') is-invalid @enderror" id="name" name="name"
                     value="{{ old('name', $product->name) }}" required>
                 <div class="message-min d-none">
-                    <span class="text-danger">* Min 3 caracters</span>
+                    <span class="text-danger">Required at least 3 characters</span>
                 </div>
                 @error('name')
                 <div class="invalid-feedback">
@@ -55,12 +55,12 @@
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label for="description" class="form-label">Description:</label>
+            <div class="input-group mb-3">
+                <label for="description" class="input-group-text">Description</label>
                 <textarea class="form-control min @error('description') is-invalid @enderror" id="description" name="description"
                     required>{{ old('description', $product->description) }}</textarea>
                 <div class="message-min d-none">
-                    <span class="text-danger">* Min 3 caracters</span>
+                    <span class="text-danger">Required at least 3 characters</span>
                 </div>
                 @error('description')
                     <div class="invalid-feedback">
@@ -69,26 +69,30 @@
                 @enderror
             </div>
 
-            <div class="input-group mb-3">
-                <label for="img_path" class="input-group-text">Upload images</label>
+            <div class="mb-3">
+                <div class="form-text mx-2">Upload one or more images</div>
                 <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
             </div>
-            <button type="submit" id="submit" class="btn btn-primary mt-3">Edit</button>
-            <a href="{{ url()->previous() }}" class="btn btn-warning">Indietro</a>
+            <div class="mt-3">
+                <button type="submit" id="submit" class="btn btn-primary">Edit</button>
+                <a href="{{ url()->previous() }}" class="btn btn-warning">Back</a>
+            </div>
         </form>
-        <div class="d-flex w-100 overflow-auto mt-3">
-            @foreach ($images as $image)
+        <div>
+            <div class="mt-3">Images previously update</div>
+            <div class="d-flex w-100 overflow-auto">
+                @foreach ($images as $image)
                 <div class="productImg position-relative mx-1" style="width: 200px">
                     <img src="{{ asset($pathInit . '/' . $image) }}" alt=""
-                        style="width: 100%; height: 100%; object-fit: cover;">
+                    style="width: 100%; height: 100%; object-fit: cover;">
                     <form
-                        action="{{ route('delete.img', [$product->restaurant_id . 'chance' . $product->slug . 'chance' . $image]) }}"
-                        method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger position-absolute top-0 end-0 m-2 btn-delete">x</button>
-                    </form>
-                </div>
+                    action="{{ route('delete.img', [$product->restaurant_id . 'chance' . $product->slug . 'chance' . $image]) }}"
+                    method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger position-absolute top-0 end-0 m-2 btn-delete">x</button>
+                </form>
+            </div>
             @endforeach
         </div>
     </div>
