@@ -11,8 +11,14 @@ class RestaurantController extends Controller
     ///CHIAMATA DEI RISTORANTI FILTRATI PER TIPOLOGIA CUCINA
     public function index($nameCooking)
     {
-        $filtered_restaurants = Restaurant::whereHas('cookings', function ($query) use ($nameCooking) {
-            $query->where('name', $nameCooking);
+        $nameCookings = explode(',', $nameCooking);
+
+        $filtered_restaurants = Restaurant::where(function ($query) use ($nameCookings) {
+            foreach ($nameCookings as $nameCooking) {
+                $query->whereHas('cookings', function ($subquery) use ($nameCooking) {
+                    $subquery->where('name', $nameCooking);
+                });
+            }
         })->with('cookings')->get();
 
         return response()->json([
