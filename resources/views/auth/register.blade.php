@@ -141,7 +141,7 @@
                                 @endforeach
                             </div>
                             <div class="message d-none">
-                                <span class="text-danger">* select one tipology plis</span>
+                                <span class="text-danger">Select at least one cooking</span>
                             </div>
                         </div>
                         {{-- -----------FINE NUOVO FORM --}}
