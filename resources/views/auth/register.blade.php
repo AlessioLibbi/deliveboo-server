@@ -131,10 +131,10 @@
 
                         <div class="mb-4 row">
                             <span class="col-md-4 col-form-label text-md-right">Cookings <span class="text-danger">*</span></span>
-                            <div class="col-md-6">
+                            <div class="col-md-6 row">
 
                                 @foreach ($cookings as $cooking)
-                                <div class="form-check">
+                                <div class="form-check col-md-6 col-lg-4">
                                     <input type="checkbox" class="form-check-input" id="{{ $cooking->name }}" name="cooking_id[]" value="{{ $cooking->id }}">
                                     <label for="{{ $cooking->name }}" class="form-check-label">{{ $cooking->name }}</label>
                                 </div>
