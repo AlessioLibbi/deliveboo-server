@@ -35,8 +35,8 @@
                 <p class="card-text">{{$product->description}}</p>
             </div>
             <div class="card-footer text-end">
-                <a href="{{ route('products.edit', $product) }}" class="btn btn-secondary">Edit</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-warning">Indietro</a>
+                <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-dark">Back</a>
             </div>
         </div>
     </div>

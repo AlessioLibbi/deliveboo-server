@@ -60,10 +60,10 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control password" name="password_confirmation" required autocomplete="new-password">
+                                <div class="messagePassword d-none">
+                                    <span class="text-danger">Password doesn't match</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="messagePassword d-none">
-                            <span class="text-danger">* The password doesn't match</span>
                         </div>
 
 {{-- ------------------------------------- NUOVO FORM --}}
@@ -119,7 +119,7 @@
                             <div class="col-md-6">
                                 <input id="PIVA" type="text" class="form-control min @error('PIVA') is-invalid @enderror" name="PIVA" required>
                                 <div class="message-min d-none">
-                                    <span class="text-danger">Required at least 3 characters</span>
+                                    <span class="text-danger">Required 11 characters</span>
                                 </div>
                                 @error('PIVA')
                                 <span class="invalid-feedback" role="alert">
@@ -131,17 +131,17 @@
 
                         <div class="mb-4 row">
                             <span class="col-md-4 col-form-label text-md-right">Cookings <span class="text-danger">*</span></span>
-                            <div class="col-md-6">
+                            <div class="col-md-6 row">
 
                                 @foreach ($cookings as $cooking)
-                                <div class="form-check">
+                                <div class="form-check col-md-6 col-lg-4">
                                     <input type="checkbox" class="form-check-input" id="{{ $cooking->name }}" name="cooking_id[]" value="{{ $cooking->id }}">
                                     <label for="{{ $cooking->name }}" class="form-check-label">{{ $cooking->name }}</label>
                                 </div>
                                 @endforeach
-                            </div>
-                            <div class="message d-none">
-                                <span class="text-danger">Select at least one cooking</span>
+                                <div class="message d-none">
+                                    <span class="text-danger">Select at least one option</span>
+                                </div>
                             </div>
                         </div>
                         {{-- -----------FINE NUOVO FORM --}}
