@@ -13,7 +13,7 @@ const password = document.querySelectorAll('.password');
 
 submit.addEventListener('click', event => {
     const message = document.querySelector('.message');
-    const messagePassword = [];
+    let messagePassword = [];
     if(document.querySelector('.min')){
       let inputMin = document.querySelectorAll('.min');
       let messageMin = document.querySelectorAll('.message-min');
@@ -21,6 +21,8 @@ submit.addEventListener('click', event => {
         if(inputMin[index].value.length < 3){
           event.preventDefault();
           messageMin[index].classList.remove('d-none');
+        } else {
+          messageMin[index].classList.add('d-none');
         }
       }
     }
@@ -29,6 +31,7 @@ submit.addEventListener('click', event => {
         messagePassword.classList.add('d-none');
     }
     message.classList.add('d-none');
+    console.log(checkboxesChecked.length);
     if(checkboxesChecked.length == 0){
         event.preventDefault();
         message.classList.remove('d-none');
