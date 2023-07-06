@@ -15,8 +15,10 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                                <input id="name" type="text" class="form-control min @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div class="message-min d-none">
+                                    <span class="text-danger">Required at least 3 characters</span>
+                                </div>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -70,7 +72,10 @@
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Restaurant Name <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
+                                <input id="restaurant_name" type="text" class="form-control min @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
+                                <div class="message-min d-none">
+                                    <span class="text-danger">Required at least 3 characters</span>
+                                </div>
                                 @error('restaurant_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -83,7 +88,10 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">Address <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" required>
+                                <input id="address" type="text" class="form-control min @error('address') is-invalid @enderror" name="address" required>
+                                <div class="message-min d-none">
+                                    <span class="text-danger">Required at least 3 characters</span>
+                                </div>
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -109,7 +117,10 @@
                             <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="PIVA" type="text" class="form-control @error('PIVA') is-invalid @enderror" name="PIVA" required>
+                                <input id="PIVA" type="text" class="form-control min @error('PIVA') is-invalid @enderror" name="PIVA" required>
+                                <div class="message-min d-none">
+                                    <span class="text-danger">Required at least 3 characters</span>
+                                </div>
                                 @error('PIVA')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
