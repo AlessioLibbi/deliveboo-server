@@ -61,7 +61,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control password" name="password_confirmation" required autocomplete="new-password">
                                 <div class="messagePassword d-none">
-                                    <span class="text-danger">* The password doesn't match</span>
+                                    <span class="text-danger">Password doesn't match</span>
                                 </div>
                             </div>
                         </div>
@@ -139,9 +139,9 @@
                                     <label for="{{ $cooking->name }}" class="form-check-label">{{ $cooking->name }}</label>
                                 </div>
                                 @endforeach
-                            </div>
-                            <div class="message d-none">
-                                <span class="text-danger">Select at least one cooking</span>
+                                <div class="message d-none">
+                                    <span class="text-danger">Select at least one option</span>
+                                </div>
                             </div>
                         </div>
                         {{-- -----------FINE NUOVO FORM --}}
