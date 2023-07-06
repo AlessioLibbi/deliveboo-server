@@ -10,8 +10,8 @@ const checkboxesChecked = Array.from(document.querySelectorAll('input[type="chec
 const submit = document.getElementById('submit');
 const password = document.querySelectorAll('.password');
 
-
-submit.addEventListener('click', event => {
+if(submit){
+  submit.addEventListener('click', event => {
     const message = document.querySelector('.message');
     let messagePassword = [];
     if(document.querySelector('.min')){
@@ -53,6 +53,8 @@ checkboxes.forEach((checkbox) => {
     }
   });
 });
+}
+
   
 
 
