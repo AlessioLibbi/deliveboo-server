@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="messagePassword d-none">
-                            <span class="text-danger">* The password dont match</span>
+                            <span class="text-danger">* The password doesn't match</span>
                         </div>
 
 {{-- ------------------------------------- NUOVO FORM --}}
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <span class="col-md-4 col-form-label text-md-right">Cookings</span>
+                            <span class="col-md-4 col-form-label text-md-right">Cookings <span class="text-danger">*</span></span>
                             <div class="col-md-6">
 
                                 @foreach ($cookings as $cooking)
@@ -135,7 +135,8 @@
                         </div>
                         {{-- -----------FINE NUOVO FORM --}}
                         <div class="mb-4 row mb-0">
-                            <div class="col-md-6 offset-md-4 text-end">
+                            <div class="d-flex my-5 justify-content-between">
+                                <span class="text-danger">Campi obbligatori <span class="text-danger">*</span></span>
                                 <button id="submit" class="btn btn-primary" type="submit">
                                     {{ __('Register') }}
                                 </button>
