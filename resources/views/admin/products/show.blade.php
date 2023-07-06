@@ -36,7 +36,7 @@
             </div>
             <div class="card-footer text-end">
                 <a href="{{ route('products.edit', $product) }}" class="btn btn-secondary">Edit</a>
-                <a href="{{ url()->previous() }}" class="btn btn-warning">Indietro</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-warning">Indietro</a>
             </div>
         </div>
     </div>
