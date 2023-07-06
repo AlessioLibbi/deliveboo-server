@@ -9,8 +9,11 @@
 
             <div class="input-group mb-3">
                 <label for="name" class="input-group-text">Name</label>
-                <input type="text" class="form-control" id="name" name="name"
+                <input type="text" class="form-control min" id="name" name="name"
                     value="{{ old('name', $restaurant->name) }}" required>
+            </div>
+            <div class="message-min d-none">
+                <span class="text-danger">* Min 3 caracters</span>
             </div>
             @error('name')
                 <div class="text-danger">
@@ -19,8 +22,11 @@
             @enderror
             <div class="input-group mb-3">
                 <label for="address" class="input-group-text">Address</label>
-                <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
+                <input type="text" class="min form-control @error('address') is-invalid @enderror" id="address" name="address"
                     value="{{ old('address', $restaurant->address) }}" required>
+            </div>
+            <div class="message-min d-none">
+                <span class="text-danger">* Min 3 caracters</span>
             </div>
             @error('address')
                 <div class="text-danger">
@@ -48,9 +54,12 @@
                 </div>
             @enderror
             <div class="input-group mb-3">
-                <label for="PIVA" class="input-group-text">VAT Number</label>
-                <input type="PIVA" class="form-control" id="PIVA" name="PIVA" step="0.01"
+                <label for="PIVA" class="input-group-text ">VAT Number</label>
+                <input type="PIVA" class="form-control min" id="PIVA" name="PIVA" step="0.01"
                     value="{{ old('PIVA', $restaurant->PIVA) }}" required>
+            </div>
+            <div class="message-min d-none">
+                <span class="text-danger">* Min 3 caracters</span>
             </div>
             @error('PIVA')
                 <div class="text-danger">

@@ -14,6 +14,16 @@ const password = document.querySelectorAll('.password');
 submit.addEventListener('click', event => {
     const message = document.querySelector('.message');
     const messagePassword = [];
+    if(document.querySelector('.min')){
+      let inputMin = document.querySelectorAll('.min');
+      let messageMin = document.querySelectorAll('.message-min');
+      for (let index = 0; index < inputMin.length; index++) {
+        if(inputMin[index].value.length < 3){
+          event.preventDefault();
+          messageMin[index].classList.remove('d-none');
+        }
+      }
+    }
     if(document.querySelector('.messagePassword')){
         messagePassword = document.querySelector('.messagePassword');
         messagePassword.classList.add('d-none');
