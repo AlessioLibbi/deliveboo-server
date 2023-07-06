@@ -72,7 +72,7 @@
                 <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
             </div>
             
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary" id="submit">Add Product</button>
             <a href="{{ url()->previous() }}" class="btn btn-warning">Back</a>
         </form>
     </div>

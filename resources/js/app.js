@@ -14,8 +14,9 @@ if(submit){
   submit.addEventListener('click', event => {
     const message = document.querySelector('.message');
     let messagePassword = [];
-    if(document.querySelector('.min')){
+    if(document.querySelectorAll('.min')){
       let inputMin = document.querySelectorAll('.min');
+      console.log(inputMin);
       let messageMin = document.querySelectorAll('.message-min');
       for (let index = 0; index < inputMin.length; index++) {
         if(inputMin[index].value.length < 3){
