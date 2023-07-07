@@ -72,8 +72,25 @@
                         @foreach ($products as $product)
                             <tr class="align-middle">
                                 <td class="d-none d-xl-table-cell">
-                                    <img src="{{ asset('img/images.png') }}" alt="" class="img-fluid rounded"
-                                        style="max-width: 100px;">
+                                    @php
+                                        $directory = public_path($product->image_path);
+                                        $files = glob($directory . '/*');
+                                        
+                                        $paths = null;
+                                        
+                                        if (!empty($files)) {
+                                            $randomFile = $files[array_rand($files)];
+                                            $paths = str_replace(public_path(), '', $randomFile);
+                                        }
+                                    @endphp
+                                    @if ($product->image_path)
+                                        <img src="{{ $paths }}" alt="" class="img-fluid rounded"
+                                            style="max-width: 100px;">
+                                    @else
+                                        <img src="{{ asset('img/images.png') }}" alt="" class="img-fluid rounded"
+                                            style="max-width: 100px;">
+                                    @endif
+
                                 </td>
                                 <td>{{ $product->name }}</td>
                                 <td>
@@ -92,7 +109,7 @@
                                         style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button  class="btn btn-danger btn-delete">Delete</button>
+                                        <button class="btn btn-danger btn-delete">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -102,5 +119,4 @@
             </div>
             @yield('content')
         </div>
-
     @endsection
