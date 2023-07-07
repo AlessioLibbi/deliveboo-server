@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //FILTRO PER RISTORANTI PER TIPOLOGIA CUCINA
-Route::get('filtered_restaurant/{nameCooking}', [RestaurantController::class, 'index']);
+Route::get('restaurants/{nameCooking?}', [RestaurantController::class, 'index']);
 
 //CHIAMATA DI TUTTI I TIPI DI CUCINA
 Route::get('cookingType', [CookingController::class, 'index']);
