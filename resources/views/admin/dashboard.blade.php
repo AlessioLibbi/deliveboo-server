@@ -109,7 +109,7 @@
                                         style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger btn-delete">Delete</button>
+                                        <button class="btn btn-danger btn-delete" data-product-name="{{$product->name}}">Delete</button>
                                     </form>
                                 </td>
                             </tr>
