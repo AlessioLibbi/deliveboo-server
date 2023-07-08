@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CookingController;
+use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\RestaurantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //FILTRO PER RISTORANTI PER TIPOLOGIA CUCINA
-Route::get('filtered_restaurant/{nameCooking}', [RestaurantController::class, 'index']);
+Route::get('restaurants/{nameCooking?}', [RestaurantController::class, 'index']);
 
 //CHIAMATA DI TUTTI I TIPI DI CUCINA
 Route::get('cookingType', [CookingController::class, 'index']);
 
-//
+//FILTRO PER RISTORANTE SINGOLO E MENU
+Route::get('restaurantMenu/{restaurantID?}', [MenuController::class, 'index']);

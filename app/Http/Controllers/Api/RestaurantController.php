@@ -6,24 +6,31 @@ use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+
 class RestaurantController extends Controller
 {
     ///CHIAMATA DEI RISTORANTI FILTRATI PER TIPOLOGIA CUCINA
-    public function index($nameCooking)
+    public function index($nameCooking = null)
     {
-        $nameCookings = explode(',', $nameCooking);
+        if (empty($nameCooking)) {
+            $restaurants = Restaurant::with('cookings')->get();
+        } else {
 
-        $filtered_restaurants = Restaurant::where(function ($query) use ($nameCookings) {
-            foreach ($nameCookings as $nameCooking) {
-                $query->whereHas('cookings', function ($subquery) use ($nameCooking) {
-                    $subquery->where('name', $nameCooking);
-                });
-            }
-        })->with('cookings')->get();
+            $nameCookings = explode('&', $nameCooking);
+            $restaurants = Restaurant::where(function ($query) use ($nameCookings) {
+                foreach ($nameCookings as $nameCooking) {
+                    $query->whereHas('cookings', function ($subquery) use ($nameCooking) {
+                        $subquery->where('name', $nameCooking);
+                    });
+                }
+            })->with('cookings')->get();
+        }
+
 
         return response()->json([
             'success' => true,
-            'results' => $filtered_restaurants,
+            'results' => $restaurants,
         ]);
     }
 }
