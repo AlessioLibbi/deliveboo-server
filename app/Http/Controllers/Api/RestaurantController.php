@@ -6,8 +6,6 @@ use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\isEmpty;
-
 class RestaurantController extends Controller
 {
     ///CHIAMATA DEI RISTORANTI FILTRATI PER TIPOLOGIA CUCINA
@@ -26,8 +24,6 @@ class RestaurantController extends Controller
                 }
             })->with('cookings')->get();
         }
-
-
         return response()->json([
             'success' => true,
             'results' => $restaurants,

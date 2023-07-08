@@ -113,7 +113,7 @@
                         method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger position-absolute top-0 end-0 m-2 btn-delete">x</button>
+                        <button class="btn btn-danger position-absolute top-0 end-0 m-2 btn-delete" data-product-name="this image">x</button>
                     </form>
                 </div>
                 @endforeach

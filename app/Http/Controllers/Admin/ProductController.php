@@ -81,6 +81,8 @@ class ProductController extends Controller
                             $images[] = $product->image_path.'/'.$file;
                         }
                     }
+            } else{
+                $images[] = 'img/images.png';
             }
             return view('admin.products.show', compact('product', 'images'));
         } else {
