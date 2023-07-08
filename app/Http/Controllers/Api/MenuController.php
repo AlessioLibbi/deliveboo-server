@@ -15,7 +15,7 @@ class MenuController extends Controller
 
         return response()->json([
             'success' => true,
-            'result' => $restaurantMenu,
+            'results' => $restaurantMenu,
         ]);
     }
 }
