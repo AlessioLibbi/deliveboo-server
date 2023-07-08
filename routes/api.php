@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CookingController;
 use App\Http\Controllers\Api\MenuController;
+use App\Http\Controllers\Api\Orders\OrdersController;
 use App\Http\Controllers\Api\RestaurantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,9 @@ Route::get('cookingType', [CookingController::class, 'index']);
 
 //FILTRO PER RISTORANTE SINGOLO E MENU
 Route::get('restaurantMenu/{restaurantSlug?}', [MenuController::class, 'index']);
+
+// CHIAMATA PER I PAGAMENTI
+
+Route::get('order', [OrdersController::class, 'generate']);
+Route::post('payment', [OrdersController::class, 'put']);
+
