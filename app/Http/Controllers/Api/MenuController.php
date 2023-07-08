@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    public function index($restaurantID)
+    public function index($restaurantSlug)
     {
-        $restaurantMenu = Restaurant::with('product')->where('id', $restaurantID)->get();
+        $restaurantMenu = Restaurant::with('product')->where('slug', $restaurantSlug)->get();
 
 
         return response()->json([

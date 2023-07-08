@@ -28,4 +28,4 @@ Route::get('restaurants/{nameCooking?}', [RestaurantController::class, 'index'])
 Route::get('cookingType', [CookingController::class, 'index']);
 
 //FILTRO PER RISTORANTE SINGOLO E MENU
-Route::get('restaurantMenu/{restaurantID?}', [MenuController::class, 'index']);
+Route::get('restaurantMenu/{restaurantSlug?}', [MenuController::class, 'index']);
