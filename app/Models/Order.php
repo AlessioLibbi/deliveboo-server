@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $fillable = ['guest_name', 'address', 'phone', 'email', 'total', 'date' ];
     public function statuses()
     {
         return $this->belongsTo(Status::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Models\Order;
 use App\Models\Product;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
@@ -35,6 +36,14 @@ class OrdersController extends Controller
         ]);
         
         if($results->success){
+            $order = Order::create([
+                'guest_name' => $pay->name,
+                'phone' => $pay->phone,
+                'address' => $pay->address,
+                'email' => $pay->email,
+                'total' => $priceOrder,
+                'date' => date("Y-m-d"),
+            ]);
             return response()->json([
                 'message' => 'Transazione eseguita con successo',
                 'success' => true
