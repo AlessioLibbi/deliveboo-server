@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date')->nullable(false);
             $table->unsignedDecimal('total')->nullable(false);
             $table->string('guest_name', 50)->nullable(false);
-            $table->string('adress', 50)->nullable(false);
+            $table->string('address', 50)->nullable(false);
             $table->string('email', 50)->nullable(false);
             $table->string('phone', 13)->nullable(false);
             $table->timestamps();
