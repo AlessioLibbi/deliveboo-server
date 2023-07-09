@@ -10,7 +10,7 @@ class MenuController extends Controller
 {
     public function index($restaurantSlug)
     {
-        $restaurantMenu = Restaurant::with('product')->where('slug', $restaurantSlug)->get();
+        $restaurantMenu = Restaurant::with('product', 'cookings')->where('slug', $restaurantSlug)->get();
 
 
         return response()->json([
