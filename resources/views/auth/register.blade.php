@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }} <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control min @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control min @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus maxlength="255">
                                 <div class="message-min d-none">
                                     <span class="text-danger">Required at least 3 characters</span>
                                 </div>
@@ -72,7 +72,7 @@
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">Restaurant Name <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="restaurant_name" type="text" class="form-control min @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required>
+                                <input id="restaurant_name" type="text" class="form-control min @error('restaurant_name') is-invalid @enderror" name="restaurant_name" required maxlength="255">
                                 <div class="message-min d-none">
                                     <span class="text-danger">Required at least 3 characters</span>
                                 </div>
@@ -117,7 +117,7 @@
                             <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="PIVA" type="text" class="form-control PIVA @error('PIVA') is-invalid @enderror" name="PIVA" required>
+                                <input id="PIVA" type="text" class="form-control PIVA @error('PIVA') is-invalid @enderror" name="PIVA" required maxlength="11">
                                 <div class="message-PIVA d-none">
                                     <span class="text-danger">Required 11 characters</span>
                                 </div>
@@ -147,7 +147,7 @@
                         {{-- -----------FINE NUOVO FORM --}}
                         <div class="mb-4 row mb-0">
                             <div class="d-flex my-5 justify-content-between">
-                                <span class="text-danger">Campi obbligatori <span class="text-danger">*</span></span>
+                                <span class="text-danger">Field required <span class="text-danger">*</span></span>
                                 <button id="submit" class="btn btn-primary" type="submit">
                                     {{ __('Register') }}
                                 </button>

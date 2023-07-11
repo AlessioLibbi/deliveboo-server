@@ -2,6 +2,7 @@ import "./bootstrap";
 import "~resources/scss/app.scss";
 import * as bootstrap from "bootstrap";
 import { forEach } from "lodash";
+import { Logger } from "sass";
 import.meta.glob(["../img/**"]);
 const message = document.getElementById("message");
 const deleteBtns = document.querySelectorAll(".btn-delete");
@@ -26,7 +27,7 @@ if(submit){
         }
       }
       if(document.querySelector('.PIVA')){
-
+        
         let messagePIVA = document.querySelector('.message-PIVA')
         let inputPIVA = document.querySelector('.PIVA');
         if(inputPIVA.value.length !== 11){
@@ -38,20 +39,32 @@ if(submit){
       }
     }
     if(document.querySelector('.messagePassword')){
-        messagePassword = document.querySelector('.messagePassword');
-        messagePassword.classList.add('d-none');
-        message.classList.add('d-none');
-        console.log(checkboxesChecked.length);
-        if(checkboxesChecked.length == 0){
-          event.preventDefault();
+      messagePassword = document.querySelector('.messagePassword');
+      messagePassword.classList.add('d-none');
+      message.classList.add('d-none');
+      console.log(checkboxesChecked.length);
+      if(checkboxesChecked.length == 0){
+        event.preventDefault();
         message.classList.remove('d-none');
       }  if (password[0].value !== password[1].value){
         event.preventDefault();
         messagePassword.classList.remove('d-none');
       } 
     }
-})
-
+    if(document.getElementById('price')){
+      let priceMessage = document.querySelector('.price-message');
+      console.log(priceMessage);
+      let priceInput = document.getElementById('price');
+      if(priceInput.value.length < 1){
+        event.preventDefault();
+        priceMessage.classList.remove('d-none');
+      } else {
+        priceMessage.classList.add('d-none');
+      }
+      
+    }
+  })
+  
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener('click', function() {
     if (checkbox.checked) {
