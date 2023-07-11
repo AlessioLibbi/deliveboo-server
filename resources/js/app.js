@@ -16,7 +16,6 @@ if(submit){
     let messagePassword = [];
     if(document.querySelectorAll('.min')){
       let inputMin = document.querySelectorAll('.min');
-      console.log(inputMin);
       let messageMin = document.querySelectorAll('.message-min');
       for (let index = 0; index < inputMin.length; index++) {
         if(inputMin[index].value.length < 3){
@@ -26,20 +25,31 @@ if(submit){
           messageMin[index].classList.add('d-none');
         }
       }
+      if(document.querySelector('.PIVA')){
+
+        let messagePIVA = document.querySelector('.message-PIVA')
+        let inputPIVA = document.querySelector('.PIVA');
+        if(inputPIVA.value.length !== 11){
+          event.preventDefault();
+          messagePIVA.classList.remove('d-none')
+        } else{
+          messagePIVA.classList.add('d-none')
+        }
+      }
     }
     if(document.querySelector('.messagePassword')){
         messagePassword = document.querySelector('.messagePassword');
         messagePassword.classList.add('d-none');
-    }
-    message.classList.add('d-none');
-    console.log(checkboxesChecked.length);
-    if(checkboxesChecked.length == 0){
-        event.preventDefault();
+        message.classList.add('d-none');
+        console.log(checkboxesChecked.length);
+        if(checkboxesChecked.length == 0){
+          event.preventDefault();
         message.classList.remove('d-none');
-    }  if (password[0].value !== password[1].value){
+      }  if (password[0].value !== password[1].value){
         event.preventDefault();
         messagePassword.classList.remove('d-none');
-    } 
+      } 
+    }
 })
 
 checkboxes.forEach((checkbox) => {
@@ -75,9 +85,12 @@ if (deleteBtns.length > 0) {
     });
 }
 function eliminaErrore() {
+  if(message){
+
     setTimeout(() => {
-        message.classList.add("display-none");
+      message.classList.add("display-none");
     }, 2000);
+  }
 }
 
 

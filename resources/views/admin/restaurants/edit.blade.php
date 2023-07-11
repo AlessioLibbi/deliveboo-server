@@ -80,9 +80,9 @@
                             class="text-danger">*</span></label>
     
                     <div class="col-md-6">
-                        <input id="PIVA" type="text" class="form-control min @error('PIVA') is-invalid @enderror"
+                        <input id="PIVA" type="text" class="form-control PIVA @error('PIVA') is-invalid @enderror"
                             name="PIVA" required value="{{ old('PIVA', $restaurant->PIVA) }}">
-                        <div class="message-min d-none">
+                        <div class="message-PIVA d-none">
                             <span class="text-danger">Required 11 characters</span>
                         </div>
                         @error('PIVA')

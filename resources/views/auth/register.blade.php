@@ -117,8 +117,8 @@
                             <label for="PIVA" class="col-md-4 col-form-label text-md-right">VAT Number <span class="text-danger">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="PIVA" type="text" class="form-control min @error('PIVA') is-invalid @enderror" name="PIVA" required>
-                                <div class="message-min d-none">
+                                <input id="PIVA" type="text" class="form-control PIVA @error('PIVA') is-invalid @enderror" name="PIVA" required>
+                                <div class="message-PIVA d-none">
                                     <span class="text-danger">Required 11 characters</span>
                                 </div>
                                 @error('PIVA')
