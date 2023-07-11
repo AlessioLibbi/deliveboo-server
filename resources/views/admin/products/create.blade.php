@@ -59,6 +59,9 @@
                                 value="{{ old('price') }}">
                             <span class="input-group-text">&euro;</span>
                         </div>
+                        <div class="price-message d-none">
+                            <span class="text-danger">Number equal or higher than 0 required</span>
+                        </div>
                         @error('price')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -72,22 +75,23 @@
                             class="text-danger">*</span></label>
                     <div class="col-md-6">
                         <textarea class="form-control min @error('description') is-invalid @enderror" id="description" name="description"
-                        required>{{ old('description') }}</textarea>
+                            required>{{ old('description') }}</textarea>
                         <div class="message-min d-none">
                             <span class="text-danger">Required at least 3 characters</span>
                         </div>
-                    @error('description')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                        @error('description')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="mb-4 row">
                     <div class="col-md-4 col-form-label text-md-right">Upload one or more images</div>
                     <div class="col-md-6">
-                        <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*" multiple>
+                        <input type="file" class="form-control" id="img_path" name="image_path[]" accept="image/*"
+                            multiple>
                     </div>
                 </div>
             </div>
