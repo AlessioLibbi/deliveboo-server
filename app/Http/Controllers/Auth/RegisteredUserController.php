@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'PIVA' => ['required', 'unique:' . Restaurant::class],
-            'number' => ['required', 'unique:' . Restaurant::class],
+            'number' => ['required'],
 
         ]);
 
