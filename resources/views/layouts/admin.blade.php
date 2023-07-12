@@ -25,8 +25,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+    <div id="app" class="bg-dark">
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/">Deliveboo</a>
                 <div class="d-flex">
@@ -34,7 +34,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
                         </ul>
-    
+
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
@@ -53,25 +53,22 @@
                                     </a>
                                 </div>
                             </li>
-    
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </ul>
                     </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
             </div>
-    </div>
 
-    </nav>
-
-    <div>
-        <div class="container mt-0">
-
+        </nav>
+        <div class="container mt-0 h-100 pt-5">
             <div class="row h-100">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
@@ -91,37 +88,35 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('ordersDetails.index', Auth::id()) }}">
-                                    <i class="fa-solid fa-utensils"></i> My orders
+                                    <i class="fa-solid fa-comment-dollar"></i> My Orders
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-auto">
+                <main class="col-md-9 ms-sm-auto col-lg-10 p-4 bg-light h-100 overflow-y-auto">
                     @yield('content')
                 </main>
             </div>
+
         </div>
+        <div class="modal" tabindex="-1" role="dialog" id="delete-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Warning!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you Want Delete <span id="product-name"></span>?</p>
 
-    </div>
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" id="delete-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Warning!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Do you Want Delete <span id="product-name"></span>?</p>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button id="action-delete" type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="action-delete" type="button" class="btn btn-danger">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>

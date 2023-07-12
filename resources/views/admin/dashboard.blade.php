@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container overflow-y-auto">
         <div class="row justify-content-center my-4">
             <div class="col">
 
@@ -47,7 +47,7 @@
                         <a href="{{ route('restaurants.edit', $data->id) }}" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
-                <div class="position d-flex justify-content-end mb-5">
+                <div class="position d-flex justify-content-start mb-1">
                     <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
                         Products</a>
                 </div>
