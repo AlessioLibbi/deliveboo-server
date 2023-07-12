@@ -6,33 +6,33 @@
                 <caption>List of orders</caption>
                 <thead>
                     <tr class="table-dark">
-                        <th>Order number</th>
-                        <th>Data</th>
-                        <th class="d-none d-xl-table-cell">Name Client</th>
-                        <th class="d-none d-lg-table-cell">Address</th>
+                        <th class="table-cell">Order ID</th>
+                        <th class="table-cell">Data</th>
+                        <th class="d-none d-md-table-cell">Client</th>
+                        <th class="d-none d-md-table-cell">Address</th>
                         <th class="d-none d-lg-table-cell">Phone</th>
                         <th class="d-none d-lg-table-cell">Email</th>
-                        <th class="d-none d-md-table-cell">Total</th>
-                        <th>Actions</th>
+                        <th  class="table-cell">Total</th>
+                        <th class="table-cell">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
-                        <tr class="align-middle">
-                            <td>
-                                {{$order->id}}
+                        <tr>
+                            <td class="table-cell">
+                                {{ $order->id }}
                             </td>
-                            <td class="d-none d-xl-table-cell">
-                                {{$order->date}}
+                            <td class="table-cell">
+                                {{ $order->date }}
                             </td>
-                            <td>{{ $order->guest_name }}</td>
-                            <td>
-                                {{$order->address}}
+                            <td class="d-none d-md-table-cell">{{ $order->guest_name }}</td>
+                            <td class="d-none d-md-table-cell">
+                                {{ $order->address }}
                             </td>
                             <td class="d-none d-lg-table-cell">{{ $order->phone }}</td>
-                            <td class="d-none d-md-table-cell">{{ $order->email }}</td>
-                            <td class="d-none d-md-table-cell">{{ $order->total }}&euro;</td>
-                            <td>
+                            <td class="d-none d-lg-table-cell">{{ $order->email }}</td>
+                            <td class="table-cell">{{ $order->total }}&euro;</td>
+                            <td class="table-cell">
                                 <a href="{{ route('ordersDetails.show', $order) }}" class="btn btn-dark">Show</a>
                             </td>
                         </tr>
