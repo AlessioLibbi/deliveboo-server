@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DeleteImage;
 use App\Http\Controllers\Admin\DeleteImg;
+use App\Http\Controllers\Admin\OrderDetailsController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
@@ -36,7 +37,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('products', ProductController::class);
-    Route::delete('/delete-image/{path}', [DeleteImg::class, 'delete'])->name('delete.img');
+    Route::delete('delete-image/{path}', [DeleteImg::class, 'delete'])->name('delete.img');
+    Route::resource('ordersDetails', OrderDetailsController::class)->only('index', 'show');
 });
 
 

@@ -88,6 +88,12 @@
                                     <i class="fa-solid fa-utensils"></i> My Restaurant
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('ordersDetails.index', Auth::id()) }}">
+                                    <i class="fa-solid fa-utensils"></i> My orders
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>

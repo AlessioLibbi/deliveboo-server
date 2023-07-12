@@ -14,7 +14,7 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(Cooking::class);
     }
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
@@ -26,10 +26,6 @@ class Restaurant extends Model
 
     public static function getUniqueSlugFromTitle($title)
     {
-        // Controlliamo se esiste già un post con questo slug
-        // Se esiste, aggiungo -1
-        // Controllo e se esiste, aggiungo -2 
-        // Finchè non trovo uno libero
         $slug = Str::slug($title);
         $slug_base = $slug;
         $post_found = Restaurant::where('slug', '=', $slug)->first();

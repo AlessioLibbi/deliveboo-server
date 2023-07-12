@@ -11,8 +11,8 @@ class MenuController extends Controller
 {
     public function index($restaurantSlug)
     {
-        $restaurantMenu = Restaurant::with('product', 'cookings')->where('slug', $restaurantSlug)->get();
-        foreach ($restaurantMenu[0]['product'] as $product) {
+        $restaurantMenu = Restaurant::with('products', 'cookings')->where('slug', $restaurantSlug)->get();
+        foreach ($restaurantMenu[0]['products'] as $product) {
             if($product->image_path){
                 $images = array();
                 // questa variabile prende come valore un array con tutti le imagine dil prodotto 
