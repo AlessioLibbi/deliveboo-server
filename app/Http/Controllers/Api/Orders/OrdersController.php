@@ -44,6 +44,12 @@ class OrdersController extends Controller
                 'total' => $priceOrder,
                 'date' => date("Y-m-d"),
             ]);
+            $orderDetails = $pay->products;
+            foreach ($orderDetails as $orderDetail) {
+                $productId = $orderDetail['id'];
+                $quantity = $orderDetail['quantity'];
+                $order->products()->attach($productId, ['quantity' => $quantity]);
+            }
             return response()->json([
                 'message' => 'Transazione eseguita con successo',
                 'success' => true
