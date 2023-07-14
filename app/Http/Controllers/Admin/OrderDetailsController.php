@@ -16,23 +16,23 @@ class OrderDetailsController extends Controller
     public function index()
     {
         $products = Auth::user()->restaurant->products;
-        $orders = [];
+        $unorderedOrders = collect();
     
         foreach ($products as $product) {
             $productOrders = $product->orders;
-    
+            
             foreach ($productOrders as $order) {
                 $orderId = $order->id;
-                $existingOrder = collect($orders)->first(function ($item) use ($orderId) {
+                $existingOrder = collect($unorderedOrders)->first(function ($item) use ($orderId) {
                     return $item->id === $orderId;
                 });
     
                 if (!$existingOrder) {
-                    $orders[] = $order;
+                    $unorderedOrders[] = $order;
                 }
-            }
+            };
         }
-    
+        $orders = $unorderedOrders->sortByDesc('created_at');
         return view('admin.orders.index', compact('orders'));
     }
     
