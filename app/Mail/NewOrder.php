@@ -44,10 +44,11 @@ class NewOrder extends Mailable
     public function content()
     {
 
-        return $this->markdown('emails.new-order-email'); //DA PROVARE A MODIFICARE IN CASO DI ERRORE
-        // return new Content(
-        //     view: 'view.name',
-        // );
+        // return $this->markdown('emails.new-order-email');
+        return new Content(
+            view: 'emails.new-order-email',
+            // with:['order'=>$this->order]
+        );
     }
 
     /**

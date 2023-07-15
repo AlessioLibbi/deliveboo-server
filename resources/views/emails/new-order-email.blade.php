@@ -1,1 +1,1 @@
-{{ $order }}
+<p>ciao</p>

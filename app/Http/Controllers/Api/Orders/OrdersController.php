@@ -54,7 +54,7 @@ class OrdersController extends Controller
                 $quantity = $orderDetail['quantity'];
                 $order->products()->attach($productId, ['quantity' => $quantity]);
             }
-            Mail::to($order->email)->send(new NewOrder($order));
+            Mail::to('mario@rossi.com')->send(new NewOrder($order));
             return response()->json([
                 'message' => 'Transazione eseguita con successo',
                 'success' => true
