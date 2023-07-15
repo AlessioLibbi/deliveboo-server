@@ -8,12 +8,15 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Product;
+
 
 class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $order;
+    public $products;
     /**
      * Create a new message instance.
      *
@@ -21,7 +24,11 @@ class NewOrder extends Mailable
      */
     public function __construct($_order)
     {
-        $this->order = $_order;
+        foreach($_order['products'] as $item){
+            $this->products[] =  Product::where('id', $item['id'])->first('name');
+
+        }
+    $this->order = $_order;
     }
 
     /**

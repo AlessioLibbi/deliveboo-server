@@ -24,7 +24,7 @@ class OrdersController extends Controller
     }
 
     public function put(OrderRequest $pay, Gateway $gateway)
-    {
+    {   $data = $pay->validated();
         $priceOrder = 0;
         $ids = collect($pay->products)->pluck('id')->toArray();
         $products = Product::whereIn('id', $ids)->get();
@@ -54,7 +54,7 @@ class OrdersController extends Controller
                 $quantity = $orderDetail['quantity'];
                 $order->products()->attach($productId, ['quantity' => $quantity]);
             }
-            Mail::to('mario@rossi.com')->send(new NewOrder($order));
+            Mail::to($pay->email)->send(new NewOrder($data));
             return response()->json([
                 'message' => 'Transazione eseguita con successo',
                 'success' => true
