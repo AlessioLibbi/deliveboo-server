@@ -4,23 +4,27 @@ namespace App\Http\Controllers\Api\Orders;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Mail\NewOrder;
 use App\Models\Order;
 use App\Models\Product;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
-    public function generate(Request $pay, Gateway $gateway){
+    public function generate(Request $pay, Gateway $gateway)
+    {
         $token =  $gateway->clientToken()->generate();
         $data = [
             'token' => $token,
-            'success'=> true
+            'success' => true
         ];
         return response()->json($data, 200);
     }
 
-    public function put(OrderRequest $pay, Gateway $gateway){
+    public function put(OrderRequest $pay, Gateway $gateway)
+    {   $data = $pay->validated();
         $priceOrder = 0;
         $ids = collect($pay->products)->pluck('id')->toArray();
         $products = Product::whereIn('id', $ids)->get();
@@ -31,11 +35,11 @@ class OrdersController extends Controller
             'amount' => $priceOrder,
             'paymentMethodNonce' => $pay->token,
             'options' => [
-            'submitForSettlement' => True
+                'submitForSettlement' => True
             ]
         ]);
-        
-        if($results->success){
+
+        if ($results->success) {
             $order = Order::create([
                 'guest_name' => $pay->name,
                 'phone' => $pay->phone,
@@ -50,6 +54,7 @@ class OrdersController extends Controller
                 $quantity = $orderDetail['quantity'];
                 $order->products()->attach($productId, ['quantity' => $quantity]);
             }
+            Mail::to($pay->email)->send(new NewOrder($data));
             return response()->json([
                 'message' => 'Transazione eseguita con successo',
                 'success' => true
