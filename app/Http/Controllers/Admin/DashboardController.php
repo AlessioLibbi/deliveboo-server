@@ -20,7 +20,6 @@ class DashboardController extends Controller
     {
         $id = Auth::id();
         $restaurant = Restaurant::findOrFail($id);
-        $products = Product::where('restaurant_id', $restaurant->id)->get();
 
         // STATISTICHE
         $restaurantId = Auth::user()->restaurant->id;
@@ -38,6 +37,6 @@ class DashboardController extends Controller
         ->orderBy('year', 'desc')
         ->orderBy('month', 'asc')
         ->get();
-        return view('admin.dashboard', compact('restaurant', 'products', 'stats'));
+        return view('admin.dashboard', compact('restaurant', 'stats'));
     }
 }
