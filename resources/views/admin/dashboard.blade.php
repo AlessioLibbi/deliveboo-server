@@ -1,6 +1,4 @@
 @extends('layouts.admin')
-
-
 @section('content')
     <div class="container overflow-y-auto">
         <div class="row justify-content-center my-4">
@@ -23,13 +21,19 @@
                 <ul class="row card-body" style="list-style-type: none">
                     <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Address: </span>{{ $restaurant->address }}</li>
                     <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Email: </span>{{ $restaurant->email }}</li>
-                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Telephone: </span>{{ $restaurant->number }}</li>
+                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Telephone: </span>{{ $restaurant->number }}
+                    </li>
                     <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">VAT Number: </span>{{ $restaurant->PIVA }}</li>
                 </ul>
                 {{-- <div class="text-end card-body">
                     <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="btn btn-primary">Edit</a>
                 </div> --}}
             </div>
+            {{-- STATISTICS --}}
+            <div style="width: 600px; margin: auto;">
+                <canvas id="myChart" data-stats="{{$stats}}"></canvas>
+            </div>
+            {{-- END STATISTICS --}}
             <div class="d-flex justify-content-end mb-1 p-0">
                 <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
                     Product</a>
@@ -102,4 +106,4 @@
             </table>
             @yield('content')
         </div>
-    @endsection
+@endsection
