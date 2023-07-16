@@ -22,8 +22,9 @@ if(dataholder){
     
     function getStats(){
         stats.forEach(element => {
+            let myMonth = labels[element.month - 1];
             let obj = {
-                X: element.month,
+                X: myMonth,
                 Y:element.order_count
             }
             myData.push(obj);
