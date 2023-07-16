@@ -6,7 +6,6 @@
                 <caption>List of orders</caption>
                 <thead>
                     <tr class="table-dark">
-                        <th class="table-cell">Order ID</th>
                         <th class="table-cell">Data</th>
                         <th class="d-none d-md-table-cell">Client</th>
                         <th class="d-none d-md-table-cell">Address</th>
@@ -20,10 +19,7 @@
                     @foreach ($orders as $order)
                         <tr>
                             <td class="table-cell">
-                                {{ $order->id }}
-                            </td>
-                            <td class="table-cell">
-                                {{ $order->date }}
+                                {{ $order->created_at }}
                             </td>
                             <td class="d-none d-md-table-cell">{{ $order->guest_name }}</td>
                             <td class="d-none d-md-table-cell">

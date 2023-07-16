@@ -18,7 +18,7 @@
 
 
             </div>
-            <div class="card p-0 text-decoration-none shadow-lg border border-success border-2">
+            <div class="card p-0 my-5 text-decoration-none border border-success border-2">
                 <h2 class="card-header fs-3 fw-bolder bg-success text-white">{{ $data->name }}</h2>
                 <ul class="row card-body" style="list-style-type: none">
                     <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Address: </span>{{ $data->address }}</li>
@@ -30,9 +30,9 @@
                     <a href="{{ route('restaurants.edit', $data->id) }}" class="btn btn-primary">Edit</a>
                 </div> --}}
             </div>
-            <div class="d-flex justify-content-start mb-1">
+            <div class="d-flex justify-content-end mb-1 p-0">
                 <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
-                    Products</a>
+                    Product</a>
             </div>
             <table class="table table-hover table-bordered text-center">
                 <caption>List of product</caption>
