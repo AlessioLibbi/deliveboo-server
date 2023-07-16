@@ -18,8 +18,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $restaurant = Restaurant::findOrFail($id);
+        // $id = Auth::id();
+        // $restaurant = Restaurant::findOrFail($id);
+        $restaurant = Auth::user()->restaurant;
 
         // STATISTICHE
         $restaurantId = Auth::user()->restaurant->id;
