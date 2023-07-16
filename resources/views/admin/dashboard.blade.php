@@ -19,15 +19,15 @@
 
             </div>
             <div class="card p-0 my-5 text-decoration-none border border-success border-2">
-                <h2 class="card-header fs-3 fw-bolder bg-success text-white">{{ $data->name }}</h2>
+                <h2 class="card-header fs-3 fw-bolder bg-success text-white">{{ $restaurant->name }}</h2>
                 <ul class="row card-body" style="list-style-type: none">
-                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Address: </span>{{ $data->address }}</li>
-                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Email: </span>{{ $data->email }}</li>
-                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Telephone: </span>{{ $data->number }}</li>
-                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">VAT Number: </span>{{ $data->PIVA }}</li>
+                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Address: </span>{{ $restaurant->address }}</li>
+                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Email: </span>{{ $restaurant->email }}</li>
+                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Telephone: </span>{{ $restaurant->number }}</li>
+                    <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">VAT Number: </span>{{ $restaurant->PIVA }}</li>
                 </ul>
                 {{-- <div class="text-end card-body">
-                    <a href="{{ route('restaurants.edit', $data->id) }}" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="btn btn-primary">Edit</a>
                 </div> --}}
             </div>
             <div class="d-flex justify-content-end mb-1 p-0">
