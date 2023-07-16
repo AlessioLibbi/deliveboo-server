@@ -108,7 +108,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Do you Want Delete <span id="product-name"></span>?</p>
+                        <p>Are you sure you want to delete <span id="product-name"></span>?</p>
 
                     </div>
                     <div class="modal-footer">
