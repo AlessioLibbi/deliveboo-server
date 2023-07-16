@@ -82,13 +82,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-danger' : '' }}"
                                     href="{{ route('restaurants.show', Auth::id()) }}">
-                                    <i class="fa-solid fa-utensils"></i> My Restaurant
+                                    <i class="fa-solid fa-utensils"></i> Restaurant
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-danger' : '' }}"
                                     href="{{ route('products.index', Auth::id()) }}">
-                                    <i class="fa-solid fa-pizza-slice"></i> My Products
+                                    <i class="fa-solid fa-pizza-slice"></i> Menù
                                 </a>
                             </li>
                             <li class="nav-item">

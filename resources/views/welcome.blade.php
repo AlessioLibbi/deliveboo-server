@@ -4,7 +4,7 @@
 <div class="jumbotron p-5 mb-4 bg-light rounded-3">
     <div class="container py-5">
         <div class="logo_laravel">
-            <img src="{{url('/img/db_logo.png')}}" alt="deliveboo_logo">
+            <img src="{{url('/img/db_logo.png')}}" alt="deliveboo_logo" class="img-fluid">
         </div>
         <h1 class="display-5 fw-bold">
             Welcome to Deliveboo Restaurants
