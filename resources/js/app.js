@@ -1,4 +1,5 @@
 import "./bootstrap";
+import "./myPie.js"
 import './mychart.js';
 import "~resources/scss/app.scss";
 import * as bootstrap from "bootstrap";

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container overflow-y-auto">
-        <div class="row justify-content-center my-4">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col">
 
                 @if (session('message'))
@@ -16,7 +16,7 @@
 
 
             </div>
-            <div class="card p-0 my-5 text-decoration-none border border-success border-2">
+            <div class="card p-0 text-decoration-none border border-success border-2">
                 <h2 class="card-header fs-3 fw-bolder bg-success text-white">{{ $restaurant->name }}</h2>
                 <ul class="row card-body" style="list-style-type: none">
                     <li class="col-sm-12 col-md-6 p-1"><span class="fw-bold">Address: </span>{{ $restaurant->address }}</li>
@@ -30,11 +30,17 @@
                 </div> --}}
             </div>
             {{-- STATISTICS --}}
-            <div style="width: 600px; margin: auto;">
-                <canvas id="myChart" data-stats="{{$stats}}"></canvas>
+            <div class="row my-5">
+
+                <div class="col-lg-4">
+                    <canvas id="myPie" data-stats="{{ $stats }}"></canvas>
+                </div>
+                <div class="col-lg-8">
+                    <canvas id="myChart" data-stats="{{ $stats }}"></canvas>
+                </div>
             </div>
             {{-- END STATISTICS --}}
-            <div class="d-flex justify-content-end mb-1 p-0">
+            {{-- <div class="d-flex justify-content-end mb-1 p-0">
                 <a href="{{ route('products.create') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>
                     Product</a>
             </div>
@@ -97,13 +103,14 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-delete my-1 w-100"
                                             data-product-name="{{ $product->name }}">Delete</button>
+                                    </form>
                                 </div>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
-            @yield('content')
+            </table> --}}
         </div>
+
+    </div>
 @endsection

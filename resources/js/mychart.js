@@ -31,14 +31,13 @@ if(dataholder){
         });
     }
     getStats();
-    console.log(myData);
     const data = {
         labels: labels,
         datasets: [{
             label: 'Orders per month',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: myData.reverse(),
+            backgroundColor: '#c12f2f',
+            borderColor: '#c12f2f',
+            data: myData,
         }]
     };
     

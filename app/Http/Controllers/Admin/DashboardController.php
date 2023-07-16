@@ -36,7 +36,7 @@ class DashboardController extends Controller
         )
         ->groupBy('year', 'month')
         ->orderBy('year', 'desc')
-        ->orderBy('month', 'desc')
+        ->orderBy('month', 'asc')
         ->get();
         return view('admin.dashboard', compact('restaurant', 'products', 'stats'));
     }
