@@ -19,7 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        
+        $restaurantId = Auth::user()->restaurant->id;
+        $products = Product::where('restaurant_id', $restaurantId)->get();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -56,7 +58,7 @@ class ProductController extends Controller
             
         }
         $product = Product::create($validatedData);
-        return redirect()->route('dashboard');
+        return redirect()->route('products.index');
     }
 
     /**

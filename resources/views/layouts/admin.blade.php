@@ -74,21 +74,27 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-danger' : '' }}"
                                     href="{{ route('dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.show' ? 'bg-danger' : '' }}"
                                     href="{{ route('restaurants.show', Auth::id()) }}">
-                                    <i class="fa-solid fa-utensils"></i> My Restaurant
+                                    <i class="fa-solid fa-utensils"></i> Restaurant
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'restaurants.index' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'products.index' ? 'bg-danger' : '' }}"
+                                    href="{{ route('products.index', Auth::id()) }}">
+                                    <i class="fa-solid fa-pizza-slice"></i> Menù
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'ordersDetails.index' ? 'bg-danger' : '' }}"
                                     href="{{ route('ordersDetails.index', Auth::id()) }}">
-                                    <i class="fa-solid fa-comment-dollar"></i> My Orders
+                                    <i class="fa-solid fa-comment-dollar"></i> Orders
                                 </a>
                             </li>
                         </ul>
