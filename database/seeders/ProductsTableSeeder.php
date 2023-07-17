@@ -18,14 +18,15 @@ class ProductsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 20; $i++) {
+        for($r = 1; $r < 4; $r++)
+        for ($i = 0; $i < 10; $i++) {
             $product = new Product();
             $product->name = $faker->word();
             $product->slug = Str::slug($product->name, '-');
             $product->description = $faker->sentence(5);
             $product->visibility = $faker->numberBetween(0,1);
-            $product->price = $faker->randomFloat(2, 0, 50);
-            $product->restaurant_id = 1;
+            $product->price = $faker->randomFloat(2, 5, 30);
+            $product->restaurant_id = $r;
             $product->save();
         };
     }
