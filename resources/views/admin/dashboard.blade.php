@@ -27,8 +27,7 @@
                 </ul>
             </div>
             {{-- STATISTICS --}}
-            @if (empty($stats))
-                {
+            @if (isset($myYear) )
                 <div class="card p-0 text-decoration-none border border-success border-2 my-3">
                     <h2 class="card-header fs-3 fw-bolder bg-success text-white">Analytics</h2>
                     <div class="card-body">
@@ -39,7 +38,7 @@
                                 <form action="{{ route('dashboard') }}" method="GET" class="h-100">
                                     <div class="d-flex flex-column justify-content-between h-100">
                                         <div class="fs-5">
-                                            <p>Here are you statistics for {{ $year }}.</p>
+                                            <p>Here are you statistics for {{ $myYear }}.</p>
                                             <p>Change the input below to analyse a selected year.</p>
                                         </div>
                                         <div class="input-group">
@@ -105,7 +104,6 @@
                         </div>
                     </div>
                 </div>
-                }
             @endif
             {{-- END STATISTICS --}}
         </div>
