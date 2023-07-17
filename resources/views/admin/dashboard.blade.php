@@ -26,6 +26,22 @@
                 </ul>
             </div>
             {{-- STATISTICS --}}
+            <form action="{{ route('dashboard') }}" method="GET">
+                <select name="year">
+                    @foreach($yearArray as $year)
+                        <option value="{{ $year }}" @if($year == $request->input('year')) selected @endif>{{ $year }}</option>
+                    @endforeach
+                </select>
+            
+                {{-- <select name="mese">
+                    <option value="">Seleziona un mese</option>
+                    @foreach($months as $month)
+                        <option value="{{ $month }}" @if($month == $request->input('mese')) selected @endif>{{ $month }}</option>
+                    @endforeach
+                </select> --}}
+            
+                <button type="submit">Filtra</button>
+            </form>
             <div class="row my-5">
 
                 <div class="col-lg-4">

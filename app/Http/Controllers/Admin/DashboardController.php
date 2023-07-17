@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isNan;
+
 class DashboardController extends Controller
 {
     /**
@@ -16,15 +18,17 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $id = Auth::id();
-        // $restaurant = Restaurant::findOrFail($id);
         $restaurant = Auth::user()->restaurant;
 
         // STATISTICHE
         $restaurantId = Auth::user()->restaurant->id;
-        $stats = DB::table('orders')
+        $year = $request->input('year');
+        $yearArray =[];
+        
+        
+        $statsQuery = DB::table('orders')
         ->join('order_product', 'orders.id','=', 'order_product.order_id')
         ->join('products', 'order_product.product_id','=', 'products.id')
         ->where('products.restaurant_id',$restaurantId)
@@ -33,11 +37,28 @@ class DashboardController extends Controller
             DB::raw('MONTH(orders.created_at) as month'),
             DB::raw('COUNT(DISTINCT orders.id) as order_count'),
             DB::raw('SUM(order_product.quantity * products.price) as total_sales')
-        )
-        ->groupBy('year', 'month')
-        ->orderBy('year', 'desc')
-        ->orderBy('month', 'asc')
-        ->get();
-        return view('admin.dashboard', compact('restaurant', 'stats'));
+            )
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'asc');
+            
+            if(empty($yearArray)){
+                $firstStats = @$statsQuery->get();
+                
+                foreach ($firstStats as $item) {
+                    if(!in_array($item->year, $yearArray)){
+                        array_push($yearArray, $item->year);
+                    }
+                }
+            }
+
+        
+        if(!empty($year)){
+            $statsQuery->whereYear('orders.created_at', $year);
+        }else{
+            $statsQuery->whereYear('orders.created_at', $yearArray[0]);
+        }
+        $stats = $statsQuery->get();
+        return view('admin.dashboard', compact('restaurant', 'stats', 'yearArray', 'request'));
     }
 }
