@@ -30,19 +30,19 @@ if(document.getElementById('mypsw')){
 
   myInput.onkeyup = function(){
     const lowerCaseLetters = /[a-z]/g;
-    if(lowerCaseLetters.test(myInput)){
+    if(lowerCaseLetters.test(myInput.value)){
       letter.classList.add('d-none');
     }else{
       letter.classList.remove('d-none');
     }
     const upperCaseLetters = /[A-Z]/g;
-    if(upperCaseLetters.test(myInput)){
+    if(upperCaseLetters.test(myInput.value)){
       capital.classList.add('d-none');
     }else{
       capital.classList.remove('d-none');
     }
     const numbers = /[0-9]/g;
-    if(numbers.test(myInput)){
+    if(numbers.test(myInput.value)){
       number.classList.add('d-none');
     }else{
       number.classList.remove('d-none');
