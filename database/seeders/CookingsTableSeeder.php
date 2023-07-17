@@ -15,7 +15,7 @@ class CookingsTableSeeder extends Seeder
      */
     public function run()
     {
-        $cookings_array = ['italiano', 'cinese', 'greco', 'indiano', 'messicano', 'giapponese', 'vegetariano', 'americano', 'pizza', 'sushi', 'colombiano'];
+        $cookings_array = ['italiano', 'cinese', 'brasiliano', 'greco', 'messicano', 'giapponese', 'pizza', 'vegetariano', 'indiano', 'americano', 'sushi', 'colombiano'];
         foreach ($cookings_array as $cooking) {
             $new_cooking = new Cooking();
             $new_cooking->name = $cooking;
