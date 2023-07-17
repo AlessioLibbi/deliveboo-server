@@ -52,32 +52,39 @@ class DashboardController extends Controller
                 }
             }
 
-        
-        if(!empty($year)){
-            $statsQuery->whereYear('orders.created_at', $year);
-        }else{
-            $year = $yearArray[0];
-            $statsQuery->whereYear('orders.created_at', $year);
-        }
-        $stats = $statsQuery->get();
-        $totalSale = 0;
-        $totalOrder = 0;
-        $topSale = null;
-        $topOrder = null;
-        foreach ($stats as $item) {
-            $totalSale += floatval($item->total_sales);
-            $totalOrder +=  $item->order_count;
-            if($topSale < floatval($item->total_sales)){
-                $topSale = floatval($item->total_sales);
-            };
-            if($topOrder < intval($item->order_count)){
-                $topOrder = intval($item->order_count);
-            };
+        if($yearArray){
+            if(!empty($year)){
+                $statsQuery->whereYear('orders.created_at', $year);
+            }else{
+                $year = $yearArray[0];
+                $statsQuery->whereYear('orders.created_at', $year);
+            }
+            $stats = $statsQuery->get();
+            $totalSale = 0;
+            $totalOrder = 0;
+            $topSale = null;
+            $topOrder = null;
+            foreach ($stats as $item) {
+                $totalSale += floatval($item->total_sales);
+                $totalOrder +=  $item->order_count;
+                if($topSale < floatval($item->total_sales)){
+                    $topSale = floatval($item->total_sales);
+                };
+                if($topOrder < intval($item->order_count)){
+                    $topOrder = intval($item->order_count);
+                };
+    
+                
+            }
+            $avgSale = number_format($totalSale / count($stats), 2,'.');
+            $avgOrder = number_format($totalOrder / count($stats), 2,'.');
+            return view('admin.dashboard', compact('restaurant', 'stats', 'yearArray', 'myMonths', 'request', 'totalSale', 'totalOrder', 'topSale', 'topOrder', 'avgSale', 'avgOrder', 'year'));
 
-            
+        }else{
+            $stats = $statsQuery->get();
+            // dd($stats);
+            return view('admin.dashboard', compact('restaurant', 'stats'));
+
         }
-        $avgSale = number_format($totalSale / count($stats), 2,'.');
-        $avgOrder = number_format($totalOrder / count($stats), 2,'.');
-        return view('admin.dashboard', compact('restaurant', 'stats', 'yearArray', 'myMonths', 'request', 'totalSale', 'totalOrder', 'topSale', 'topOrder', 'avgSale', 'avgOrder', 'year'));
     }
 }
