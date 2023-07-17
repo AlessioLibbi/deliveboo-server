@@ -35,8 +35,8 @@ if(dataholder){
         labels: labels,
         datasets: [{
             label: 'Orders per month',
-            backgroundColor: '#c12f2f',
-            borderColor: '#c12f2f',
+            backgroundColor: '#016565',
+            borderColor: '#016565',
             data: myData,
         }]
     };
