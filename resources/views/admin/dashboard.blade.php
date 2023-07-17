@@ -33,10 +33,10 @@
 
                     <div class="row my-5">
 
-                        <div class="col-md-4 align-items-start">
+                        <div class="col-lg-4 align-items-start">
                             <form action="{{ route('dashboard') }}" method="GET" class="h-100">
                                 <div class="d-flex flex-column justify-content-between h-100">
-                                    <div>
+                                    <div class="fs-5">
                                         <p>Here are you statistics for {{$year}}.</p>
                                         <p>Change the input below to analyse a selected year.</p>
                                     </div>
@@ -53,33 +53,15 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <canvas id="myChart" data-stats="{{ $stats }}"></canvas>
                         </div>
                     </div>
                     <div class="row my-5">
-                        <div class="col-md-8 text-center d-flex flex-column justify-content-end">
+                        <div class="col-md-6 col-lg-8 text-center d-flex flex-column justify-content-end">
                             <div class="col-lg-12 m-0 p-0">
                                 <table class="table table-bordered">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>Total sales</th>
-                                            <th>Average sales</th>
-                                            <th>Top sale</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>&euro; {{ $totalSale }}</td>
-                                            <td>&euro; {{ $avgSale }}</td>
-                                            <td>&euro; {{ $topSale }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-lg-12 m-0 p-0">
-                                <table class="table table-bordered">
-                                    <thead class="table-dark">
+                                    <thead class="table-success">
                                         <tr>
                                             <th>Total orders</th>
                                             <th>Average orders</th>
@@ -95,8 +77,26 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="col-lg-12 m-0 p-0">
+                                <table class="table table-bordered">
+                                    <thead class="table-success">
+                                        <tr>
+                                            <th>Total sales</th>
+                                            <th>Average sales</th>
+                                            <th>Top sale</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>&euro; {{ $totalSale }}</td>
+                                            <td>&euro; {{ $avgSale }}</td>
+                                            <td>&euro; {{ $topSale }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <canvas id="myPie" data-stats="{{ $stats }}"></canvas>
                         </div>
                     </div>
