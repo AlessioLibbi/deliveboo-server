@@ -16,7 +16,7 @@
                         <input id="name" type="text" class="form-control min @error('name') is-invalid @enderror"
                             name="name" required value="{{ old('name', $restaurant->name) }}">
                         <div class="message-min d-none">
-                            <span class="text-danger">Required at least 3 characters</span>
+                            <span class="text-danger">At least 3 characters required</span>
                         </div>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                         <input id="address" type="text" class="form-control min @error('address') is-invalid @enderror"
                             name="address" required value="{{ old('address', $restaurant->address) }}">
                         <div class="message-min d-none">
-                            <span class="text-danger">Required at least 3 characters</span>
+                            <span class="text-danger">At least 3 characters required</span>
                         </div>
                         @error('address')
                             <span class="invalid-feedback" role="alert">
@@ -49,8 +49,11 @@
                             class="text-danger">*</span></label>
     
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        <input id="inputEmail" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" required autocomplete="email" value="{{ old('email', $restaurant->email) }}">
+                            <div id="messageEmail" class=" d-none">
+                                <span class="text-danger">Valid email required</span>
+                            </div>
     
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -61,12 +64,15 @@
                 </div>
     
                 <div class="mb-4 row">
-                    <label for="number" class="col-md-4 col-form-label text-md-right">Number <span
+                    <label for="inputNumber" class="col-md-4 col-form-label text-md-right">Number <span
                             class="text-danger">*</span></label>
     
                     <div class="col-md-6">
-                        <input id="number" type="text" class="form-control @error('number') is-invalid @enderror"
-                            name="number" required value="{{ old('number', $restaurant->number) }}">
+                        <input id="inputNumber" type="text" class="form-control @error('number') is-invalid @enderror"
+                            name="number" required value="{{ old('number', $restaurant->number) }}" maxlength="15">
+                            <div id="messageNumber" class="d-none">
+                                <span class="text-danger">Valid number required</span>
+                            </div>
                         @error('number')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

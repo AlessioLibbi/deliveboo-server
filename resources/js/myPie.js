@@ -43,7 +43,6 @@ if(dataholder){
             bgColors.push(myColor);
 
         });
-        console.log(myData, labels, bgColors);
     }
     getStats();
     const data = {

@@ -28,10 +28,10 @@ class UpdateRestaurantRequest extends FormRequest
         
         return [
             'name' => 'required',
-            'address' => ['required', 'max:20', 'min:3'],
+            'address' => ['required', 'max:50', 'min:3'],
             'email' => ['required','email', 'max:255', Rule::unique(Restaurant::class)->ignore($this->user()->id)],
-            'number' => ['required', 'max:20', Rule::unique(Restaurant::class)->ignore($this->user()->id)],
-            'PIVA' => ['required', 'max:20', 'min:3', Rule::unique(Restaurant::class)->ignore($this->user()->id)],
+            'number' => ['required', 'max:20'],
+            'PIVA' => ['required', 'max:12', 'min:10', Rule::unique(Restaurant::class)->ignore($this->user()->id)],
             'cooking_id' => 'required'
         ];
     }

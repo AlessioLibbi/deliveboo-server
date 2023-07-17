@@ -1,8 +1,10 @@
 $success: #016565;
 $danger: #c12f2f;
 @import "~bootstrap/scss/bootstrap";
-.display-none {
-    display: none;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 #app {
     width: 100%;
