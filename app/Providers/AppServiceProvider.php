@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Braintree\Gateway;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
                 'privateKey' => '05bfae42597dddab3bcc97aa5deaa5d1'
             ]);
         });
+        Paginator::useBootstrap();
     }
 }
 

@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         $username = Auth::user()->name;
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with('message', "Ciao {$username} Ti sei loggato");
+        return redirect()->intended(RouteServiceProvider::HOME)->with('message', "Welcome back {$username}");
     }
 
     /**

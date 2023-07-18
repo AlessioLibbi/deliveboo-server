@@ -166,7 +166,7 @@ function eliminaErrore() {
 
     setTimeout(() => {
       timer.classList.add("d-none");
-    }, 2000);
+    }, 3000);
   }
 }
 
