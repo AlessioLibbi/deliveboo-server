@@ -2,20 +2,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col">
-
-                @if (session('message'))
-                    <div class="card-body alert alert-success" id="message">
-
-                        <div role="alert">
-                            {{ session('message') }}
-
-                        </div>
-                    </div>
-                @endif
-
-
-            </div>
             <div class="card p-0 text-decoration-none border border-success border-2 my-3">
                 <h2 class="card-header fs-3 fw-bolder bg-success text-white">{{ $restaurant->name }}</h2>
                 <ul class="row card-body" style="list-style-type: none">

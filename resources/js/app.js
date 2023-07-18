@@ -6,7 +6,7 @@ import * as bootstrap from "bootstrap";
 import { forEach } from "lodash";
 import { Logger } from "sass";
 import.meta.glob(["../img/**"]);
-const message = document.getElementById("message");
+const timer = document.getElementById("timer");
 const deleteBtns = document.querySelectorAll(".btn-delete");
 const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
 const checkboxesChecked = Array.from(document.querySelectorAll('input[type="checkbox"][checked]'));
@@ -14,42 +14,42 @@ const submit = document.getElementById('submit');
 const password = document.querySelectorAll('.password');
 
 
-if(document.getElementById('mypsw')){
+if (document.getElementById('mypsw')) {
   const myInput = document.getElementById("mypsw");
   const letter = document.getElementById("myletter");
   const capital = document.getElementById("mycapital");
   const number = document.getElementById("mynumber");
   const length = document.getElementById("mylength");
   const pswbox = document.getElementById('validatePassword');
-  myInput.onfocus = function(){
-     pswbox.classList.remove('d-none');
+  myInput.onfocus = function () {
+    pswbox.classList.remove('d-none');
   };
-  myInput.onblur = function(){
-     pswbox.classList.add('d-none');
+  myInput.onblur = function () {
+    pswbox.classList.add('d-none');
   };
 
-  myInput.onkeyup = function(){
+  myInput.onkeyup = function () {
     const lowerCaseLetters = /[a-z]/g;
-    if(lowerCaseLetters.test(myInput.value)){
+    if (lowerCaseLetters.test(myInput.value)) {
       letter.classList.add('d-none');
-    }else{
+    } else {
       letter.classList.remove('d-none');
     }
     const upperCaseLetters = /[A-Z]/g;
-    if(upperCaseLetters.test(myInput.value)){
+    if (upperCaseLetters.test(myInput.value)) {
       capital.classList.add('d-none');
-    }else{
+    } else {
       capital.classList.remove('d-none');
     }
     const numbers = /[0-9]/g;
-    if(numbers.test(myInput.value)){
+    if (numbers.test(myInput.value)) {
       number.classList.add('d-none');
-    }else{
+    } else {
       number.classList.remove('d-none');
     }
-    if(myInput.value.length >= 8){
+    if (myInput.value.length >= 8) {
       length.classList.add('d-none');
-    }else{
+    } else {
       length.classList.remove('d-none');
     }
   }
@@ -162,10 +162,10 @@ if (deleteBtns.length > 0) {
   });
 }
 function eliminaErrore() {
-  if (message) {
+  if (timer) {
 
     setTimeout(() => {
-      message.classList.add("display-none");
+      timer.classList.add("d-none");
     }, 2000);
   }
 }

@@ -101,6 +101,20 @@
                     </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 p-4 bg-light h-100 overflow-y-auto">
+                    <div class="col">
+
+                        @if (session('message'))
+                            <div class="card-body alert alert-success" id="timer">
+        
+                                <div role="alert">
+                                    {{ session('message') }}
+        
+                                </div>
+                            </div>
+                        @endif
+        
+        
+                    </div>
                     @yield('content')
                 </main>
             </div>

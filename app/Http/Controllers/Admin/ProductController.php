@@ -58,7 +58,7 @@ class ProductController extends Controller
             
         }
         $product = Product::create($validatedData);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('message', "{$product->name} has been added");
     }
 
     /**
@@ -145,7 +145,7 @@ class ProductController extends Controller
             $validatedData['image_path'] = 'storage' . '/' .$directory;
         }
         $product->update($validatedData);
-        return redirect()->route('dashboard');
+        return redirect()->route('products.index')->with('message', "{$product->name} has been updated");
     }
 
     /**
@@ -159,6 +159,7 @@ class ProductController extends Controller
         // file sirve per eliminare le immagine che hanno relazione con il prodotto eliminato
         File::deleteDirectory($product->image_path);
         $product->delete(); 
-        return redirect()->route('dashboard');
+        return redirect()->route('products.index')->with('message', "Product has been successfully deleted");
+
     }
 }

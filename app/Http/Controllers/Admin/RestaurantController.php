@@ -91,8 +91,8 @@ class RestaurantController extends Controller
         }
         $restaurant->update($data);
 
-        return redirect()->route('dashboard', $restaurant->id)
-            ->with('success', 'Restaurant updated successfully');
+        return redirect()->route('restaurants.show', $restaurant->id)
+            ->with('message', "{$restaurant->name} updated successfully");
     }
 
     /**
